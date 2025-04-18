@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <link rel="shortcut icon" href="favicons/!Encoder Icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>New Tab</title>
-   
-   
+    <title>New Tab</title> 
   </head>
   <body style="background-image: url(NewTabPage/Background.png); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
  <style>
@@ -14,11 +12,6 @@
         background: #FFFFFF;
         margin: 0;
       }
-
-  
-
-
-
 body {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 81.25%;
@@ -53,24 +46,9 @@ button {
 }
    </style>   
  <iframe style=" z-index: -1;border:none; margin-left: auto; margin-right: 0; width: 100%; height: 64px" src="bar.html"></iframe>
-    <img width="272px"height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png"></img>
+    <img width="272px"height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png">
     <div id="inputWrapper">
-    <input placeholder="Search Google or type a URL" id="SearchArea"class="searchBox"></input>
-      
-      
-    <script>
-     const searchBox = document.getElementById("SearchArea");
-    searchBox.addEventListener('keydown', function(event) {
-      console.log('Key pressed:', event.key);
-    if (event.key === 'Enter') {
-        console.log('Enter key was pressed');
-        const text = `https://google.com/search?q=${encodeURIComponent(searchBox.value)}`
-        console.log(text)
-        window.top.location.href = text;
-	
-    };
-	window.parent.postMessage(event.key);
-});
-  </script>
+    <input placeholder="Search Google or type a URL" id="SearchArea"class="searchBox">
+    <script src="NewTabPage/newtab.js"></script>
   </body>
 </html>
