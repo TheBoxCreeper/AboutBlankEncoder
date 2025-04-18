@@ -15,7 +15,7 @@
       <img width="272px" height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png">
       <div id="inputWrapper">
         <input placeholder="Search Google or type a URL" id="SearchArea" class="searchBox">
-        <script src="/NewTabPage/newtab.js"></script>
+        <script src="NewTabPage/newtab.js"></script>
       </div>
     </div>
     <div id="bodyDiv" class="bodyDiv" style="margin-left: 8px; margin-right:8px z-index:10;">
@@ -25,15 +25,6 @@
       <p id="currentTime" style="font-family: Inconsolata"></p>
       <p id="currentConnection" style="font-family: Inconsolata; color: #00ff00">You are online!</p>
       <p class="ZipNotif" style="font-family: Inconsolata; color: #ff0000">This file is still in a Zipped(Compressed) folder! Some functions may be broken as this is not supposed to run in a zipped(Compressed) folder! Extract the folder and then run this file.</p>
-      <script>
-        function showTime() {
-          document.getElementById('currentTime').innerHTML = new Date().toUTCString();
-        };
-        showTime();
-        setInterval(function() {
-          showTime();
-        }, 1000);
-      </script>
       <style>
         /* Reverse, Idk why i put this here */
         @font-face {
@@ -373,8 +364,6 @@
         const OfflineBox = document.getElementById('OfflineBox');
         const DynamicBox = document.getElementById('DynamicBox');
         const DynamicBoxSpan = document.getElementById('DynamicBoxSpan');
-        //const FileSwitch = document.getElementById("FileBox");
-        //const UseFile = false;
         let iconURL;
         const internet = false;
 
@@ -423,24 +412,6 @@
         UploadButton.onclick = function() {
           document.getElementById('upload').click();
         };
-        //FileButton.onclick = function() {
-        //  document.getElementById('File').click();
-        //};
-        //FileSwitch.addEventListener('change', (event) => {
-        //  SwitchFile();
-        //});
-        //function SwitchFile() {
-        //   const UseFile = FileSwitch.checked;
-        //  console.log(UseFile);
-        //  if (UseFile == true) {
-        //    URLInput.setAttribute("disabled","true");
-        //    FileButton.removeAttribute("disabled");
-        //  } else {
-        //    URLInput.removeAttribute("disabled");
-        //    FileButton.setAttribute("disabled","true");
-        //  };
-        //  return UseFile;
-        //};
         BodySwitch.addEventListener('change', (event) => {
           EncodeBody();
         });
@@ -475,23 +446,16 @@
             return iconURL;
           };
         };
-        //function UFF() {
-        // const [file2] = File.files;
-        // if (file2) {
-        //   let fileURL =  URL.createObjectURL(file2);
-        //   console.log(fileURL);
-        //   return fileURL;
-        // } else {
-        //  let fileURL = undefined;
-        //  return fileURL;
-        //  };
-        //};
+  function showTime() {
+          document.getElementById('currentTime').innerHTML = new Date().toUTCString();
+        };
+        showTime();
+        setInterval(function() {
+          showTime();
+        }, 1000);
         Upload.onchange = evt => {
           UIF();
         };
-        //File.onchange = evt => {
-        // UFF();
-        //};
         document.querySelector('#LinkButton').onclick = function() {
           win = window.open();
           win.document.body.style.margin = '0';
