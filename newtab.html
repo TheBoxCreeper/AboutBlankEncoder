@@ -1,0 +1,131 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicons/!Encoder Icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Tab</title>
+   
+   
+  </head>
+  <body style="background-image: url(NewTabPage/Background.png); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+ <style>
+      body {
+        background: #FFFFFF;
+        margin: 0;
+      }
+
+      #backgroundImage {
+        border: none;
+        height: 100%;
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        visibility: hidden;
+        width: 100%;
+      }
+
+      [show-background-image] #backgroundImage {
+        visibility: visible;
+      }
+      /*
+ * Copyright 2020 The Chromium Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* TODO(aee): this file should probably be turned into a module that imports
+ * 'ui/webui/resources/shared_vars_css.m.js'.
+ */
+html {
+  --google-grey-850-rgb: 48, 49, 52;  /* #303134 */
+  --google-grey-850: rgb(var(--google-grey-850-rgb));
+  --google-red-50-rgb: 252, 232, 230;  /* #fce8e6 */
+  --google-red-50: rgb(var(--google-red-50-rgb));
+  --google-red-800-rgb: 179, 20, 18;  /* #b31412 */
+  --google-red-800: rgb(var(--google-red-800-rgb));
+  --ntp-focus-shadow: 0 0 0 2px var(--color-new-tab-page-focus-ring);
+  --ntp-module-first-element-top-padding: 4px;
+  --ntp-module-icon-size: 48px;
+  --ntp-module-item-border-radius: 4px;
+  --ntp-module-line-height: 20px;
+  --ntp-module-text-size: 13px;
+  --ntp-module-secondary-text-size: 11px;
+  --ntp-module-secondary-line-height: 16px;
+  --ntp-module-see-more-font-weight: 500;
+}
+
+/* Copyright 2015 The Chromium Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file. */
+
+/* This file is dynamically processed by a C++ data source handler to fill in
+ * some per-platform/locale styles that dramatically alter the page. This is
+ * done to reduce flicker, as JS may not run before the page is rendered.
+ *
+ * There are two ways to include this stylesheet:
+ * 1. via its chrome://resources/ URL in HTML, i.e.:
+ *
+ *   <link rel="stylesheet" href="chrome://resources/css/text_defaults_md.css">
+ *
+ * 2. via the webui::AppendWebUICSSTextDefaultsMd() method to directly append it
+ * to an HTML string.
+ * Otherwise its placeholders won't be expanded. */
+
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 81.25%;
+}
+
+button {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+.searchBox {
+  display:block;
+  border:none; 
+  border-radius: 100px; 
+  background-image:url(NewTabPage/SearchIcon.png); 
+  background-color: white; 
+  background-repeat: no-repeat;
+  background-position: 15px 15px; 
+  margin-left:auto;
+  font-family: 'Segoe UI';
+  margin-right: auto;
+  outline: none;
+  width: 750px;
+  padding: 15px 10px 15px 50px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px 2px #DBDBDB;
+}
+#Logo {
+  display: block; 
+  margin-top: 65px;
+  margin-left: auto; 
+  margin-right: auto;
+  margin-bottom:40px;
+}
+   </style>   
+ <iframe style=" z-index: -1;border:none; margin-left: auto; margin-right: 0; width: 100%; height: 64px" src="bar.html"></iframe>
+    <img width="272px"height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png"></img>
+    <div id="inputWrapper">
+    <input placeholder="Search Google or type a URL" id="SearchArea"class="searchBox"></input>
+      
+      
+    <script>
+     const searchBox = document.getElementById("SearchArea");
+    searchBox.addEventListener('keydown', function(event) {
+      console.log('Key pressed:', event.key);
+    if (event.key === 'Enter') {
+        console.log('Enter key was pressed');
+        const text = `https://google.com/search?q=${encodeURIComponent(searchBox.value)}`
+        console.log(text)
+        window.top.location.href = text;
+	
+    };
+	window.parent.postMessage(event.key);
+});
+  </script>
+  </body>
+</html>

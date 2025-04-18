@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>New Tab</title>
+    <base target="_blank">
+    <link rel="shortcut icon" href="favicons/!Encoder Icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/zipnotif.css" />
+  </head>
+  <body style="margin: 0px; height: 100vh;">
+    <div id="NewTab" style="display: none;height:100vh; background-image: url(NewTabPage/Background.png); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+      <style>
+        #backgroundImage {
+          border: none;
+          height: 100%;
+          pointer-events: none;
+          position: fixed;
+          top: 0;
+          visibility: hidden;
+          width: 100%;
+        }
+
+        [show-background-image] #backgroundImage {
+          visibility: visible;
+        }
+
+        /*
+ * Copyright 2020 The Chromium Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+        /* TODO(aee): this file should probably be turned into a module that imports
+ * 'ui/webui/resources/shared_vars_css.m.js'.
+ */
+        html {
+          --google-grey-850-rgb: 48, 49, 52;
+          /* #303134 */
+          --google-grey-850: rgb(var(--google-grey-850-rgb));
+          --google-red-50-rgb: 252, 232, 230;
+          /* #fce8e6 */
+          --google-red-50: rgb(var(--google-red-50-rgb));
+          --google-red-800-rgb: 179, 20, 18;
+          /* #b31412 */
+          --google-red-800: rgb(var(--google-red-800-rgb));
+          --ntp-focus-shadow: 0 0 0 2px var(--color-new-tab-page-focus-ring);
+          --ntp-module-first-element-top-padding: 4px;
+          --ntp-module-icon-size: 48px;
+          --ntp-module-item-border-radius: 4px;
+          --ntp-module-line-height: 20px;
+          --ntp-module-text-size: 13px;
+          --ntp-module-secondary-text-size: 11px;
+          --ntp-module-secondary-line-height: 16px;
+          --ntp-module-see-more-font-weight: 500;
+        }
+
+        /* Copyright 2015 The Chromium Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file. */
+        /* This file is dynamically processed by a C++ data source handler to fill in
+ * some per-platform/locale styles that dramatically alter the page. This is
+ * done to reduce flicker, as JS may not run before the page is rendered.
+ *
+ * There are two ways to include this stylesheet:
+ * 1. via its chrome://resources/ URL in HTML, i.e.:
+ *
+ *   
+								<link rel="stylesheet" href="chrome://resources/css/text_defaults_md.css">
+ *
+ * 2. via the webui::AppendWebUICSSTextDefaultsMd() method to directly append it
+ * to an HTML string.
+ * Otherwise its placeholders won't be expanded. */
+        .searchBox {
+          display: block;
+          border: none;
+          border-radius: 100px;
+          background-image: url(NewTabPage/SearchIcon.png);
+          background-color: white;
+          background-repeat: no-repeat;
+          background-position: 15px 15px;
+          margin-left: auto;
+          font-family: 'Segoe UI';
+          margin-right: auto;
+          outline: none;
+          width: 750px;
+          padding: 15px 10px 15px 50px;
+          box-sizing: border-box;
+          box-shadow: 0px 0px 4px 2px #DBDBDB;
+        }
+
+        #Logo {
+          display: block;
+          margin-top: 65px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 40px;
+        }
+      </style>
+      <iframe style=" z-index: -1;border:none; margin-left: auto; margin-right: 0; width: 100%; height: 64px" src="bar.html"></iframe>
+      <img width="272px" height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png">
+      <div id="inputWrapper">
+        <input placeholder="Search Google or type a URL" id="SearchArea" class="searchBox">        <script>
+          const searchBox = document.getElementById("SearchArea");
+          searchBox.addEventListener('keydown', function(event) {
+            console.log('Key pressed:', event.key);
+            if (event.key === 'Enter') {
+              console.log('Enter key was pressed');
+              const text = `https://google.com/search?q=${encodeURIComponent(searchBox.value)}`
+              console.log(text)
+              window.location.href = text;
+            };
+          });
+        </script>
+      </div>
+    </div>
+    <div id="bodyDiv" class="bodyDiv" style="margin-left: 8px; margin-right:8px z-index:10;">
+      <h1 class="title">About:Blank Encoder by <a href="https://sites.google.com/view/terminal-games">Terminal</a>
+      </h1>
+      <font face="Inconsolata">Encode any url into a about:blank page! Note: Some websites do not allow this. Press ctrl+\ to show/hide a new tab page! You can get the newest version or any version of this encoder here: <a href="https://drive.google.com/drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd">Versions</a>. </font>
+      <p id="currentTime" style="font-family: Inconsolata"></p>
+      <p id="currentConnection" style="font-family: Inconsolata; color: #00ff00">You are online!</p>
+      <p class="ZipNotif" style="font-family: Inconsolata; color: #ff0000">This file is still in a Zipped(Compressed) folder! Some functions may be broken as this is not supposed to run in a zipped(Compressed) folder! Extract the folder and then run this file.</p>
+      <script>
+        function showTime() {
+          document.getElementById('currentTime').innerHTML = new Date().toUTCString();
+        };
+        showTime();
+        setInterval(function() {
+          showTime();
+        }, 1000);
+      </script>
+      <style>
+        /* Reverse, Idk why i put this here */
+        @font-face {
+          font-family: 'Reverse';
+          font-weight: normal;
+          font-stretch: 100%;
+          font-display: swap;
+          src: url(fonts/reverse.woff) format('woff');
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        /* vietnamese */
+        @font-face {
+          font-family: 'Inconsolata';
+          font-style: normal;
+          font-weight: 200 900;
+          font-stretch: 100%;
+          font-display: swap;
+          src: url(fonts/Inconsolata1.woff2) format('woff2');
+          unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+        }
+
+        /* latin-ext */
+        @font-face {
+          font-family: 'Inconsolata';
+          font-style: normal;
+          font-weight: 200 900;
+          font-stretch: 100%;
+          font-display: swap;
+          src: url(fonts/Inconsolata2.woff2) format('woff2');
+          unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        /* latin */
+        @font-face {
+          font-family: 'Inconsolata';
+          font-style: normal;
+          font-weight: 200 900;
+          font-stretch: 100%;
+          font-display: swap;
+          src: url(fonts/Inconsolata3.woff2) format('woff2');
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        /* cyrillic-ext */
+        @font-face {
+          font-family: 'Press Start 2P';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url(fonts/PressStart2P1.woff2) format('woff2');
+          unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        }
+
+        /* cyrillic */
+        @font-face {
+          font-family: 'Press Start 2P';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url(fonts/PressStart2P2.woff2) format('woff2');
+          unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+
+        /* greek */
+        @font-face {
+          font-family: 'Press Start 2P';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url(fonts/PressStart2P3.woff2) format('woff2');
+          unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+        }
+
+        /* latin-ext */
+        @font-face {
+          font-family: 'Press Start 2P';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url(fonts/PressStart2P4.woff2) format('woff2');
+          unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        /* latin */
+        @font-face {
+          font-family: 'Press Start 2P';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url(fonts/PressStart2P5.woff2) format('woff2');
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        body {
+          background-color: #000000;
+          color: #00ff00;
+        }
+
+        .title {
+          color: #00ff00;
+          font-family: Inconsolata;
+        }
+
+        .TextInput {
+          width: 100%;
+          padding: 12px 3px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border: 2px solid #00ff00;
+          border-radius: 4px;
+          background-color: #000000;
+          color: #00ff00;
+          font-family: Inconsolata;
+        }
+
+        .TextInput:focus {
+          outline: none;
+          border: 3px solid #00ff00;
+          padding: 11px 3px;
+        }
+
+        .TextInput::placeholder {
+          opacity: 0.5;
+          font-family: Inconsolata;
+          color: #00FF00;
+        }
+
+        .TextInput:disabled {
+          border: 2px solid #00aa00;
+          background-color: #005000;
+          cursor: not-allowed;
+        }
+
+        .inconsolata-font {
+          font-family: "Inconsolata", serif;
+          font-optical-sizing: auto;
+          font-weight: 400;
+          font-style: normal;
+          font-variation-settings:
+            "wdth"100;
+        }
+
+        .c-button {
+          min-width: 100%;
+          font-family: Inconsolata;
+          appearance: none;
+          border: 0;
+          border-radius: 5px;
+          background: #00ff00;
+          color: #000000;
+          padding: 12px 46px;
+          font-size: 16px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 38px;
+        }
+
+        .c-button:hover {
+          background: #00ff00;
+        }
+
+        .c-button:focus {
+          outline: none;
+          box-shadow: 0 0 0 4px #00aa00;
+        }
+
+        /* The container */
+        .hiddencheckbox {
+          display: block;
+          font-family: Inconsolata;
+          position: relative;
+          padding-left: 35px;
+          margin-bottom: 12px;
+          cursor: pointer;
+          font-size: 16px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+        .hiddencheckbox input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .Cbox {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 18px;
+          width: 18px;
+          background-color: #000000;
+          border: 2px solid #00ff00;
+          border-radius: 5px;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .Cbox:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .hiddencheckbox input:checked~.Cbox:after {
+          display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .hiddencheckbox .Cbox:after {
+          left: 5px;
+          top: 1px;
+          width: 5px;
+          height: 10px;
+          border: solid #00ff00;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+
+        .disabled {
+          background-color: #005000;
+          cursor: not-allowed;
+        }
+
+        .c-button:disabled {
+          background: #00aa00;
+          cursor: not-allowed;
+        }
+
+        #UploadText {
+          text-align: center;
+          font-family: Inconsolata;
+          width: 100%;
+        }
+
+        .FileInput {
+          display: none;
+        }
+
+        #DisplayImage {
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+        }
+
+        a:link {
+          color: #00ff00;
+        }
+
+        a:visited {
+          color: #00ff00;
+        }
+
+        a:hover {
+          color: #00ff00;
+        }
+
+        a:active {
+          color: #00ff00;
+        }
+      </style>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <label for="URLInput" style="font-family: Inconsolata">Put your url below! (Required, Make sure to include http://)</label>
+      <br>
+      <input class="TextInput" id="URLInput" type="text" placeholder="URL">
+      <br>
+      <label for="TitleInput" style="font-family: Inconsolata">Put the title of the page below! You should use the appropiate title for the icon (Optional)</label>
+      <br>
+      <input class="TextInput" id="TitleInput" type="text" placeholder="about:blank">
+      <br>
+      <label for="upload" style="font-family: Inconsolata" id="ImageLabel">Upload the icon below. Choose an appropiate icon for the title. Icons are available in the favicon folder (Optional)</label>
+      <br>
+      <br>
+      <button type="button" class="c-button" id="UploadButton">Upload Image for Icon (Optional)</button>
+      <input type="file" accept="image/*" id="upload" class="FileInput">
+      <p id="UploadText">Image Chosen: No Image Chosen</p>
+      <img id="DisplayImage" src="#" alt="Image Chosen">
+      <br>
+      <label for="RuffleBox" class="hiddencheckbox">Use Ruffle scripts for Flash Games. <input type="checkbox" id="RuffleBox">
+        <span class="Cbox"></span>
+      </label>
+      <label for="BCodeBox" class="hiddencheckbox">Encode HTML code in the body instead of an URL. This can be used if you want to use an iframe insted of an embed. <input type="checkbox" id="BCodeBox">
+        <span class="Cbox"></span>
+      </label>
+      <label for="WarnBox" class="hiddencheckbox">Display a warning on when the tab is closed. <input type="checkbox" id="WarnBox">
+        <span class="Cbox"></span>
+      </label>
+      <label for="DynamicBox" class="hiddencheckbox">Use Dynamic Tabs for URLs. <input type="checkbox" checked="true" id="DynamicBox">
+        <span id="DynamicBoxSpan" class="Cbox"></span>
+      </label>
+      <br>
+      <label for="HeadCode" style="font-family: Inconsolata">Insert Head HTML code here! (Optional)</label>
+      <br>
+      <textarea class="TextInput" id="HeadCode" type="text" placeholder="Your code here..."></textarea>
+      <br>
+      <label for="BodyCode" style="font-family: Inconsolata">Insert Body HTML code here! (Optional)</label>
+      <br>
+      <textarea disabled class="TextInput" id="BodyCode" type="text" placeholder="Your code here..."></textarea>
+      <br>
+      <button type="button" id="LinkButton" class="c-button">Open link in about:blank!</button>
+      <h1 class="title">View embeddable links below:</h1>
+      <p id="OfflineBox" style="visibility: hidden; font-family: Inconsolata; color: #ff0000">You cannot embed website urls without internet. Doing so will show an error page.</p>
+      <iframe id="UrlRef" width="100%" height="500px" style="border:none" scrolling="no" src="https://docs.google.com/spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712"></iframe>
+      <script>
+        console.log("About Blank")
+        const urlObj = new window.URL(window.location.href);
+        const URLInput2 = document.getElementById("URLInput2");
+        const URLInput = document.getElementById("URLInput");
+        let url = URLInput.value;
+        let win;
+        //const FileButton = document.getElementById('FileButton');
+        //const File = document.getElementById("File");
+        let NewTabState;
+        const NewTabFrame = document.getElementById('NewTab');
+        const BodyDiv = document.getElementById('bodyDiv');
+        const HeadHtml = document.getElementById('HeadCode');
+        const BodyHtml = document.getElementById('BodyCode');
+        const UploadButton = document.getElementById('UploadButton');
+        const Upload = document.getElementById('upload');
+        const BodySwitch = document.getElementById('BCodeBox');
+        const UploadTitle = document.getElementById('TitleInput');
+        const UploadText = document.getElementById('UploadText');
+        const UploadedIcon = document.getElementById('DisplayImage');
+        const OnlineSViewer = document.getElementById('currentConnection');
+        const UrlRef = document.getElementById('UrlRef');
+        const OfflineBox = document.getElementById('OfflineBox');
+        const DynamicBox = document.getElementById('DynamicBox');
+        const DynamicBoxSpan = document.getElementById('DynamicBoxSpan');
+        //const FileSwitch = document.getElementById("FileBox");
+        //const UseFile = false;
+        let iconURL;
+        const internet = false;
+
+        function checkConnection() {
+          if (navigator.onLine) {
+            console.log("Online")
+            const internet = true
+            OnlineSViewer.style.color = "#00ff00"
+            OnlineSViewer.textContent = "You are online!"
+            UrlRef.style.visibility = 'visible';
+            OfflineBox.style.visibility = 'hidden';
+            console.log(internet)
+          } else {
+            const internet = false
+            console.log("Offline")
+            OnlineSViewer.style.color = "#ff0000"
+            OnlineSViewer.textContent = "You are offline!"
+            OfflineBox.style.visibility = 'visible';
+            UrlRef.style.visibility = 'hidden';
+          };
+          return internet;
+        };
+        window.addEventListener('load', checkConnection);
+        window.addEventListener('online', checkConnection);
+        window.addEventListener('offline', checkConnection);
+        window.addEventListener('keydown', function(event) {
+          console.log('Key pressed:', event.key);
+          if (event.ctrlKey && event.key === '\\') {
+            console.log('Keyswitch detected')
+            if (NewTabState) {
+              NewTabState = false;
+              NewTabFrame.style.display = 'none';
+              BodyDiv.style.display = 'block';
+              console.log('NewTabState1 is ', NewTabState);
+            } else {
+              NewTabState = true
+              NewTabFrame.style.display = 'block';
+              BodyDiv.style.display = 'none'
+              console.log('NewTabState2 is ', NewTabState);
+            };
+          };
+        });
+        Upload.addEventListener('change', function() {
+          UploadText.textContent = "Image Chosen: " + this.files[0].name
+        })
+        UploadButton.onclick = function() {
+          document.getElementById('upload').click();
+        };
+        //FileButton.onclick = function() {
+        //  document.getElementById('File').click();
+        //};
+        //FileSwitch.addEventListener('change', (event) => {
+        //  SwitchFile();
+        //});
+        //function SwitchFile() {
+        //   const UseFile = FileSwitch.checked;
+        //  console.log(UseFile);
+        //  if (UseFile == true) {
+        //    URLInput.setAttribute("disabled","true");
+        //    FileButton.removeAttribute("disabled");
+        //  } else {
+        //    URLInput.removeAttribute("disabled");
+        //    FileButton.setAttribute("disabled","true");
+        //  };
+        //  return UseFile;
+        //};
+        BodySwitch.addEventListener('change', (event) => {
+          EncodeBody();
+        });
+
+        function EncodeBody() {
+          if (BodySwitch.checked) {
+            URLInput.setAttribute("disabled", "true");
+            DynamicBox.setAttribute("disabled", "true");
+            DynamicBoxSpan.className = 'Cbox disabled';
+            BodyHtml.removeAttribute("disabled");
+          } else {
+            URLInput.removeAttribute("disabled");
+            DynamicBox.setAttribute("disabled", "true");
+            DynamicBoxSpan.className = 'Cbox disabled';
+            BodyHtml.setAttribute("disabled", "true");
+          }
+        };
+        Upload.addEventListener('change', (event) => {
+          const icon = event.target.files[0];
+        });
+        //File.addEventListener('change', (event) => {
+        //const encodefile = event.target.files[0];
+        //});
+        function UIF() {
+          const [file] = Upload.files;
+          if (file) {
+            let iconURL = URL.createObjectURL(file);
+            UploadedIcon.src = iconURL;
+            return iconURL;
+          } else {
+            let iconURL = undefined;
+            return iconURL;
+          };
+        };
+        //function UFF() {
+        // const [file2] = File.files;
+        // if (file2) {
+        //   let fileURL =  URL.createObjectURL(file2);
+        //   console.log(fileURL);
+        //   return fileURL;
+        // } else {
+        //  let fileURL = undefined;
+        //  return fileURL;
+        //  };
+        //};
+        Upload.onchange = evt => {
+          UIF();
+        };
+        //File.onchange = evt => {
+        // UFF();
+        //};
+        document.querySelector('#LinkButton').onclick = function() {
+          win = window.open();
+          win.document.body.style.margin = '0';
+          win.document.body.style.height = '100vh';
+          win.document.head.innerHTML = HeadHtml.value;
+          const embed = win.document.createElement('embed');
+          embed.style.border = 'none';
+          embed.style.width = '100%';
+          if (DynamicBox.checked) {
+            embed.style.height = 'calc(100vh - 42px)';
+          } else {
+            embed.style.height = '100vh'
+          };
+          embed.style.margin = '0';
+          embed.id = 'Embed';
+          embed.src = document.getElementById("URLInput").value;
+          //win.document.body.appendChild(embed);
+          //if (document.getElementById('EditBox').checked) {
+          //embed.setAttribute("contenteditable","true");
+          //const Edit = win.document.createElement('script');
+          //Edit.textContent = 'const embed = document.getElementById("Embed"); embed.contentDocument.body.setAttribute("contenteditable","true") ';
+          //win.document.head.appendChild(Edit);
+          //}
+          const embed2 = win.document.createElement('embed');
+          embed2.style.border = 'none';
+          embed2.style.width = '100%';
+          embed2.style.height = 'calc(100vh - 42px)';
+          embed2.style.margin = '0';
+          embed2.id = 'Embed2';
+          embed2.src = document.getElementById("URLInput").value;
+          embed2.style.display = 'none'
+          win.document.body.appendChild(embed2);
+          const icon = win.document.createElement('link');
+          icon.rel = "shortcut icon";
+          icon.id = "PageIcon"
+          console.log(iconURL);
+          icon.href = UIF()
+          win.document.head.appendChild(icon);
+          const title = win.document.createElement('title');
+          title.id = "PageTitle"
+          title.textContent = UploadTitle.value
+          win.document.head.appendChild(title);
+          console.log(document.getElementById('RuffleBox').checked)
+          if (document.getElementById('RuffleBox').checked) {
+            const Ruffle = win.document.createElement('script');
+            Ruffle.src = "https://unpkg.com/@ruffle-rs/ruffle";
+            win.document.head.appendChild(Ruffle);
+          };
+          if (DynamicBox.checked) {
+            const terminalstyle = win.document.createElement('link');
+            terminalstyle.rel = "stylesheet";
+            terminalstyle.href = "other/dynamictab.css";
+            win.document.body.appendChild(terminalstyle);
+            const cfscript = win.document.createElement('script');
+            cfscript.src = "other/dynamictab.js"
+            win.document.body.appendChild(cfscript)
+            const ctrlFrame = win.document.createElement('div');
+            ctrlFrame.id = 'ctrlFrame';
+            const ctrlFrameParts = win.document.createElement('div');
+            ctrlFrameParts.id = 'ctrlFrameParts';
+            ctrlFrameParts.style.height = 'calc(100vh - 105px)';
+            ctrlFrameParts.style.display = 'none';
+            ctrlFrameParts.style.margin = '33px';
+            const texttitle = win.document.createElement('p');
+            texttitle.className = 'title';
+            texttitle.innerHTML = 'About:Blank Dynamic Tab by  < a href = \'https://sites.google.com/view/terminal-games\'>Terminal</a>'
+            ctrlFrameParts.appendChild(texttitle);
+            const UrlLabel = win.document.createElement('label');
+            UrlLabel.setAttribute('for', 'UrlInput');
+            UrlLabel.textContent = 'Tab Url';
+            ctrlFrameParts.appendChild(UrlLabel);
+            const UrlTabInput = win.document.createElement('input');
+            UrlTabInput.setAttribute('type', 'text');
+            UrlTabInput.className = 'TextInput';
+            UrlTabInput.id = 'UrlInput';
+            UrlTabInput.setAttribute('value', document.getElementById("URLInput").value)
+            ctrlFrameParts.appendChild(UrlTabInput);
+            const TitleLabel = win.document.createElement('label');
+            TitleLabel.setAttribute('for', 'TitleInput');
+            TitleLabel.textContent = 'Tab Title';
+            ctrlFrameParts.appendChild(TitleLabel);
+            const TitleInput = win.document.createElement('input');
+            TitleInput.setAttribute('type', 'text');
+            TitleInput.className = 'TextInput';
+            TitleInput.id = 'TitleInput';
+            TitleInput.setAttribute('value', document.getElementById("TitleInput").value);
+            ctrlFrameParts.appendChild(TitleInput);
+            const ImageLabel = win.document.createElement('label');
+            ImageLabel.setAttribute('for', 'upload');
+            ImageLabel.textContent = 'Tab Icon';
+            ctrlFrameParts.appendChild(ImageLabel);
+            const break1 = win.document.createElement('br');
+            ctrlFrameParts.appendChild(break1);
+            const break2 = win.document.createElement('br');
+            ctrlFrameParts.appendChild(break2);
+            const uploadTabButton = win.document.createElement('button');
+            uploadTabButton.setAttribute('type', 'button');
+            uploadTabButton.id = 'UploadButton';
+            uploadTabButton.className = 'c-button';
+            uploadTabButton.textContent = 'Upload Image for Icon';
+            ctrlFrameParts.appendChild(uploadTabButton);
+            const uploadIcon = win.document.createElement('input');
+            uploadIcon.setAttribute('type', 'file');
+            uploadIcon.id = 'upload';
+            uploadIcon.className = 'FileInput';
+            uploadIcon.setAttribute('accept', 'image/*');
+            ctrlFrameParts.appendChild(uploadIcon);
+            const UploadTabText = win.document.createElement('p');
+            UploadTabText.id = 'UploadText';
+            UploadTabText.textContent = 'Tab Icon: Unchanged';
+            ctrlFrameParts.appendChild(UploadTabText);
+            const DisplayIcon = win.document.createElement('img');
+            DisplayIcon.id = 'DisplayImage';
+            DisplayIcon.setAttribute('alt', 'Image Chosen')
+            DisplayIcon.src = UIF();
+            ctrlFrameParts.appendChild(DisplayIcon)
+            //ctrlFrameParts end
+            ctrlFrame.appendChild(ctrlFrameParts);
+            const arrowbtn = win.document.createElement('button');
+            arrowbtn.id = 'arrow'
+            arrowbtn.setAttribute('onclick', 'cf();')
+            arrowbtn.setAttribute('type', 'submit');
+            const arrowsym = win.document.createElement('i');
+            arrowsym.id = "arrowsymholder"
+            arrowsym.className = "arrowsym down"
+            arrowbtn.appendChild(arrowsym);
+            ctrlFrame.appendChild(arrowbtn);
+            win.document.body.appendChild(ctrlFrame);
+          };
+          if (document.getElementById('WarnBox').checked) {
+            const warn = win.document.createElement('script')
+            warn.textContent = 'const beforeUnloadHandler = (event) => {event.preventDefault();event.returnValue = true; }; window.addEventListener(\"beforeunload\", beforeUnloadHandler);'
+            win.document.head.appendChild(warn);
+          };
+          win.document.body.appendChild(embed);
+          if (BodySwitch.checked) {
+            win.document.body.innerHTML = BodyHtml.value;
+          }; //Anything past this point in the script can be inserted in the body safely.
+        };
+      </script>
+    </div>
+  </body>
+</html>
