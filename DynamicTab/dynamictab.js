@@ -16,12 +16,12 @@
       if (cfState) {
         cfState = false;
       ctrlFrameParts.style.display = "none";
-      Embed.style.display = "block";
+      document.getElementById('Embed').style.display = "block";
       arrow.className = "arrowsym down";
       } else {
         cfState = true;
         ctrlFrameParts.style.display = "block";
-        Embed.style.display = "none";
+       document.getElementById('Embed').style.display = "none";
         arrow.className = "arrowsym up";
       };
     };
@@ -56,5 +56,5 @@ TitleInput.addEventListener('change', function(event) {
 });
 UrlInput.addEventListener('change', function(event) {
   console.log('Input value changed (on blur):', event.target.value);
-  Embed.src = UrlInput.value;
+  document.getElementById('Embed').src = UrlInput.value;
 });
