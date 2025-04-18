@@ -14,18 +14,8 @@
       <iframe style=" z-index: -1;border:none; margin-left: auto; margin-right: 0; width: 100%; height: 64px" src="bar.html"></iframe>
       <img width="272px" height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png">
       <div id="inputWrapper">
-        <input placeholder="Search Google or type a URL" id="SearchArea" class="searchBox">        <script>
-          const searchBox = document.getElementById("SearchArea");
-          searchBox.addEventListener('keydown', function(event) {
-            console.log('Key pressed:', event.key);
-            if (event.key === 'Enter') {
-              console.log('Enter key was pressed');
-              const text = `https://google.com/search?q=${encodeURIComponent(searchBox.value)}`
-              console.log(text)
-              window.location.href = text;
-            };
-          });
-        </script>
+        <input placeholder="Search Google or type a URL" id="SearchArea" class="searchBox">
+        <script src="/NewTabPage/newtab.js"></script>
       </div>
     </div>
     <div id="bodyDiv" class="bodyDiv" style="margin-left: 8px; margin-right:8px z-index:10;">
