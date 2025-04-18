@@ -15,3 +15,8 @@ Insert body html when the encode html code in the body instead of an URL box is 
 ## Other
 Press the update button to update.
 Press Ctrl+\ to switch to a new tab page.
+###Theme Customization
+Change the theme.css in the css folder.
+Base color = background color
+Primary color = text and button color
+Disabled color = disabled objects color
