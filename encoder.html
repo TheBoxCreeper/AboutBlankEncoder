@@ -11,65 +11,6 @@
   <body style="margin: 0px; height: 100vh;">
     <div id="NewTab" style="display: none;height:100vh; background-image: url(NewTabPage/Background.png); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
       <style>
-        #backgroundImage {
-          border: none;
-          height: 100%;
-          pointer-events: none;
-          position: fixed;
-          top: 0;
-          visibility: hidden;
-          width: 100%;
-        }
-
-        [show-background-image] #backgroundImage {
-          visibility: visible;
-        }
-
-        /*
- * Copyright 2020 The Chromium Authors
- * Use of this source code is governed by a BSD-style license that can be
- * found in the LICENSE file.
- */
-        /* TODO(aee): this file should probably be turned into a module that imports
- * 'ui/webui/resources/shared_vars_css.m.js'.
- */
-        html {
-          --google-grey-850-rgb: 48, 49, 52;
-          /* #303134 */
-          --google-grey-850: rgb(var(--google-grey-850-rgb));
-          --google-red-50-rgb: 252, 232, 230;
-          /* #fce8e6 */
-          --google-red-50: rgb(var(--google-red-50-rgb));
-          --google-red-800-rgb: 179, 20, 18;
-          /* #b31412 */
-          --google-red-800: rgb(var(--google-red-800-rgb));
-          --ntp-focus-shadow: 0 0 0 2px var(--color-new-tab-page-focus-ring);
-          --ntp-module-first-element-top-padding: 4px;
-          --ntp-module-icon-size: 48px;
-          --ntp-module-item-border-radius: 4px;
-          --ntp-module-line-height: 20px;
-          --ntp-module-text-size: 13px;
-          --ntp-module-secondary-text-size: 11px;
-          --ntp-module-secondary-line-height: 16px;
-          --ntp-module-see-more-font-weight: 500;
-        }
-
-        /* Copyright 2015 The Chromium Authors
- * Use of this source code is governed by a BSD-style license that can be
- * found in the LICENSE file. */
-        /* This file is dynamically processed by a C++ data source handler to fill in
- * some per-platform/locale styles that dramatically alter the page. This is
- * done to reduce flicker, as JS may not run before the page is rendered.
- *
- * There are two ways to include this stylesheet:
- * 1. via its chrome://resources/ URL in HTML, i.e.:
- *
- *   
-								<link rel="stylesheet" href="chrome://resources/css/text_defaults_md.css">
- *
- * 2. via the webui::AppendWebUICSSTextDefaultsMd() method to directly append it
- * to an HTML string.
- * Otherwise its placeholders won't be expanded. */
         .searchBox {
           display: block;
           border: none;
