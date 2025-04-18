@@ -418,6 +418,10 @@
             terminalstyle.rel = "stylesheet";
             terminalstyle.href = "DynamicTab/dynamictab.css";
             win.document.body.appendChild(terminalstyle);
+            const fontstyle = win.document.createElement('link');
+            fontstyle.rel = "stylesheet";
+            fontstyle.href = "font.css";
+            win.document.body.appendChild(fontstyle);
             const cfscript = win.document.createElement('script');
             cfscript.src = "DynamicTab/dynamictab.js"
             win.document.body.appendChild(cfscript)
