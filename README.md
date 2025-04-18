@@ -12,5 +12,6 @@ The dyamic tabs box enables dynamic tabs. Change the features of the tab without
 ## Body and Head html
 Insert head html in the head html textarea.
 Insert body html when the encode html code in the body instead of an URL box is checked in the body html textarea. This disables dynamic tabs and URL input.
-## Updates
+## Other
 Press the update button to update.
+Press Ctrl+\ to switch to a new tab page.
