@@ -271,16 +271,13 @@
 
         function checkConnection() {
           if (navigator.onLine) {
-            console.log("Online")
             const internet = true
             OnlineSViewer.style.color = "#00ff00"
             OnlineSViewer.textContent = "You are online!"
             UrlRef.style.visibility = 'visible';
             OfflineBox.style.visibility = 'hidden';
-            console.log(internet)
           } else {
             const internet = false
-            console.log("Offline")
             OnlineSViewer.style.color = "#ff0000"
             OnlineSViewer.textContent = "You are offline!"
             OfflineBox.style.visibility = 'visible';
@@ -292,7 +289,6 @@
         window.addEventListener('online', checkConnection);
         window.addEventListener('offline', checkConnection);
         window.addEventListener('keydown', function(event) {
-          console.log('Key pressed:', event.key);
           if (event.ctrlKey && event.key === '\\') {
             console.log('Keyswitch detected')
             if (NewTabState) {
@@ -317,11 +313,11 @@
         BodySwitch.addEventListener('change', (event) => {
           EncodeBody();
         });
-
         function EncodeBody() {
           if (BodySwitch.checked) {
             URLInput.setAttribute("disabled", "true");
             DynamicBox.setAttribute("disabled", "true");
+            DynamicBox.checked = false;
             DynamicBoxSpan.className = 'Cbox disabled';
             BodyHtml.removeAttribute("disabled");
           } else {
@@ -334,9 +330,6 @@
         Upload.addEventListener('change', (event) => {
           const icon = event.target.files[0];
         });
-        //File.addEventListener('change', (event) => {
-        //const encodefile = event.target.files[0];
-        //});
         function UIF() {
           const [file] = Upload.files;
           if (file) {
@@ -348,7 +341,7 @@
             return iconURL;
           };
         };
-  function showTime() {
+        function showTime() {
           document.getElementById('currentTime').innerHTML = new Date().toUTCString();
         };
         showTime();
@@ -374,13 +367,6 @@
           embed.style.margin = '0';
           embed.id = 'Embed';
           embed.src = document.getElementById("URLInput").value;
-          //win.document.body.appendChild(embed);
-          //if (document.getElementById('EditBox').checked) {
-          //embed.setAttribute("contenteditable","true");
-          //const Edit = win.document.createElement('script');
-          //Edit.textContent = 'const embed = document.getElementById("Embed"); embed.contentDocument.body.setAttribute("contenteditable","true") ';
-          //win.document.head.appendChild(Edit);
-          //}
           const embed2 = win.document.createElement('embed');
           embed2.style.border = 'none';
           embed2.style.width = '100%';
