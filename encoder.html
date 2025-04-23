@@ -244,6 +244,7 @@
             texttitle.innerHTML = 'About:Blank Dynamic Tab by  <a href = \'https://sites.google.com/view/terminal-games\'>Terminal</a>'
             const tturl = win.document.createElement('a');
             tturl.setAttribute("href",document.getElementById("TitleLink").getAttribute("href"));
+            tturl.textcontent = "Terminal";
             texttitle.appendChild(tturl);
             ctrlFrameParts.appendChild(texttitle);
             const UrlLabel = win.document.createElement('label');
