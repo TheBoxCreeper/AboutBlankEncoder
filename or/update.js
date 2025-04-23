@@ -5,5 +5,6 @@ const upbutton = 1;
 const vdiv = document.getElementById("version");
 const version = vdiv.className;
 const latest = 8;
-document.getElementsById("TitleLink").setAttribute("href",site);
+document.getElementById("TitleLink").setAttribute("href",site);
+document.getElementById("drive").setAttribute("href",drive);
 console.log(version);
