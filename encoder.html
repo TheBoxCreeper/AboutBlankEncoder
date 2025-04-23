@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="font.css" />
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/base.css" />
-    <div id="version" class="8"></div>
     <script src="https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/or/update.js"></script>
   </head>
   <body style="margin: 0px; height: 100vh;">
+     <div id="version" class="8"></div>
     <div id="NewTab" style="display: none;height:100vh; background-image: url(NewTabPage/Background.png); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
       <iframe style=" z-index: -1;border:none; margin-left: auto; margin-right: 0; width: 100%; height: 64px" src="bar.html"></iframe>
       <img width="272px" height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png">
@@ -244,7 +244,7 @@
             texttitle.innerHTML = 'About:Blank Dynamic Tab by '
             const tturl = win.document.createElement('a');
             tturl.setAttribute("href",document.getElementById("TitleLink").getAttribute("href"));
-            tturl.textcontent = "Terminal";
+            tturl.textContent = "Terminal";
             texttitle.appendChild(tturl);
             ctrlFrameParts.appendChild(texttitle);
             const UrlLabel = win.document.createElement('label');
