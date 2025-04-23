@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/newtab.css" />
     <link rel="stylesheet" href="font.css" />
     <link rel="stylesheet" href="css/theme.css" />
-
+    <link rel="stylesheet" href="css/base.css" />
   </head>
   <body style="margin: 0px; height: 100vh;">
     <div id="NewTab" style="display: none;height:100vh; background-image: url(NewTabPage/Background.png); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
@@ -27,178 +27,6 @@
       <p id="currentTime" style="font-family: Inconsolata"></p>
       <p id="currentConnection" style="font-family: Inconsolata; color: #00ff00">You are online!</p>
       <p class="ZipNotif" style="font-family: Inconsolata; color: #ff0000">This file is still in a Zipped(Compressed) folder! Some functions may be broken as this is not supposed to run in a zipped(Compressed) folder! Extract the folder and then run this file.</p>
-      <style>
-        body {
-          background-color: var(--base-color);
-          color: var(--primary-color);
-        }
-        .title {
-          color: var(--primary-color);
-          font-family: Inconsolata;
-        }
-        .TextInput {
-          width: 100%;
-          padding: 12px 3px;
-          margin: 8px 0;
-          box-sizing: border-box;
-          border: 2px solid var(--primary-color);
-          border-radius: 4px;
-          background-color: var(--base-color);
-          color: var(--primary-color);
-          font-family: Inconsolata;
-        }
-        .TextInput:focus {
-          outline: none;
-          border: 3px solid var(--primary-color);
-          padding: 11px 3px;
-        }
-        .TextInput::placeholder {
-          opacity: 0.5;
-          font-family: Inconsolata;
-          color: var(--primary-color);
-        }
-        .TextInput:disabled {
-          border: 2px solid var(--secondary-color);
-          background-color: var(--disabled-color);
-          cursor: not-allowed;
-        }
-        .inconsolata-font {
-          font-family: "Inconsolata", serif;
-          font-optical-sizing: auto;
-          font-weight: 400;
-          font-style: normal;
-          font-variation-settings:
-            "wdth"100;
-        }
-        .c-button {
-          min-width: 100%;
-          font-family: Inconsolata;
-          appearance: none;
-          border: 0;
-          border-radius: 5px;
-          background: var(--primary-color);
-          color: var(--base-color);
-          padding: 12px 46px;
-          font-size: 16px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 38px;
-        }
-
-        .c-button:hover {
-          background: var(--secondary-color);
-        }
-
-        .c-button:focus {
-          outline: none;
-          box-shadow: 0 0 0 4px var(--secondary-color);
-        }
-
-        /* The container */
-        .hiddencheckbox {
-          display: block;
-          font-family: Inconsolata;
-          position: relative;
-          padding-left: 35px;
-          margin-bottom: 12px;
-          cursor: pointer;
-          font-size: 16px;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
-
-        /* Hide the browser's default checkbox */
-        .hiddencheckbox input {
-          position: absolute;
-          opacity: 0;
-          cursor: pointer;
-          height: 0;
-          width: 0;
-        }
-
-        /* Create a custom checkbox */
-        .Cbox {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 18px;
-          width: 18px;
-          background-color: var(--base-color);
-          border: 2px solid var(--primary-color);
-          border-radius: 5px;
-        }
-
-        /* Create the checkmark/indicator (hidden when not checked) */
-        .Cbox:after {
-          content: "";
-          position: absolute;
-          display: none;
-        }
-
-        /* Show the checkmark when checked */
-        .hiddencheckbox input:checked~.Cbox:after {
-          display: block;
-        }
-
-        /* Style the checkmark/indicator */
-        .hiddencheckbox .Cbox:after {
-          left: 5px;
-          top: 1px;
-          width: 5px;
-          height: 10px;
-          border: solid var(--primary-color);
-          border-width: 0 3px 3px 0;
-          -webkit-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
-        }
-
-        .disabled {
-          background-color: var(--disabled-color);
-          cursor: not-allowed;
-        }
-
-        .c-button:disabled {
-          background: var(--secondary-color);
-          cursor: not-allowed;
-        }
-
-        #UploadText {
-          text-align: center;
-          font-family: Inconsolata;
-          width: 100%;
-        }
-
-        .FileInput {
-          display: none;
-        }
-
-        #DisplayImage {
-          margin-left: auto;
-          margin-right: auto;
-          display: block;
-        }
-
-        a:link {
-          color: var(--primary-color);
-        }
-
-        a:visited {
-          color: var(--secondary-color);
-        }
-
-        a:hover {
-          color: var(--secondary-color);
-        }
-
-        a:active {
-          color: var(--primary-color);
-        }
-      </style>
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <label for="URLInput" style="font-family: Inconsolata">Put your url below! (Required, Make sure to include http://)</label>
       <br>
@@ -248,8 +76,6 @@
         const URLInput = document.getElementById("URLInput");
         let url = URLInput.value;
         let win;
-        //const FileButton = document.getElementById('FileButton');
-        //const File = document.getElementById("File");
         let NewTabState;
         const NewTabFrame = document.getElementById('NewTab');
         const BodyDiv = document.getElementById('bodyDiv');
