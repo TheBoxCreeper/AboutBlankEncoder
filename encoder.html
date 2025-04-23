@@ -23,7 +23,7 @@
       </div>
     </div>
     <div id="bodyDiv" class="bodyDiv" style="margin-left: 8px; margin-right:8px z-index:10;">
-      <h1 class="title">About:Blank Encoder by <a href="https://sites.google.com/view/terminal-games">Terminal</a>
+      <h1 class="title">About:Blank Encoder by <a id="TitleLink" href="https://sites.google.com/view/terminal-games">Terminal</a>
       </h1>
       <font face="Inconsolata">Encode any url into a about:blank page! Note: Some websites do not allow this. Press ctrl+\ to show/hide a new tab page! You can get the newest version or any version of this encoder here: <a href="https://drive.google.com/drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd">Versions</a>. </font>
       <p id="currentTime" style="font-family: Inconsolata"></p>
@@ -242,6 +242,9 @@
             const texttitle = win.document.createElement('p');
             texttitle.className = 'title';
             texttitle.innerHTML = 'About:Blank Dynamic Tab by  <a href = \'https://sites.google.com/view/terminal-games\'>Terminal</a>'
+            const tturl = win.document.createElement('a');
+            tturl.setAttribute("href",document.getElementById("TitleLink").getAttribute("href"));
+            texttitle.appendChild(tturl);
             ctrlFrameParts.appendChild(texttitle);
             const UrlLabel = win.document.createElement('label');
             UrlLabel.setAttribute('for', 'UrlInput');
