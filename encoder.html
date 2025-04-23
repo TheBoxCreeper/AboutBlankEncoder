@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="font.css" />
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/base.css" />
-    <script src="https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/or/update.js"></script>
   </head>
   <body style="margin: 0px; height: 100vh;">
      <div id="version" class="8"></div>
@@ -238,7 +237,9 @@
             ctrlFrameParts.id = 'ctrlFrameParts';
             ctrlFrameParts.style.height = 'calc(100vh - 105px)';
             ctrlFrameParts.style.display = 'none';
-            ctrlFrameParts.style.margin = '33px';
+            ctrlFrameParts.style.marginTop = '33px';
+            ctrlFrameParts.style.marginRight = '33px';
+            ctrlFrameParts.style.marginLeft = '33px';
             const texttitle = win.document.createElement('p');
             texttitle.className = 'title';
             texttitle.innerHTML = 'About:Blank Dynamic Tab by '
@@ -320,6 +321,7 @@
           }; //Anything past this point in the script can be inserted in the body safely.
         };
       </script>
+      <script src="https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/or/update.js"></script>
     </div>
   </body>
 </html>
