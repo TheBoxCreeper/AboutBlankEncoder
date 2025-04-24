@@ -16,3 +16,12 @@ document.getElementById("TitleLink").setAttribute("href",site);
 document.getElementById("drive").setAttribute("href",drive);
 document.getElementById("UrlRef").setAttribute("src",sheet);
 console.log(version);
+if (version == latest) {
+  vc.textContent = "Version: Up to date";
+} else if (version < latest && version > 0) {
+  vc.textContent = "Version: New version available";
+  vc.style.color = "#ff0000";
+} else {
+  vc.textContent = "Version: Invalid";
+  vc.style.color = "#ff0000";
+};
