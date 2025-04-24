@@ -41,7 +41,6 @@
             "wdth"100;
         }
         .c-button {
-          min-width: 100%;
           font-family: Inconsolata;
           appearance: none;
           border: 0;
@@ -55,6 +54,10 @@
           align-items: center;
           justify-content: center;
           height: 38px;
+        }
+
+        .c-width {
+         min-width: 100%;
         }
 
         .c-button:hover {
