@@ -28,7 +28,7 @@
       <p id="currentTime" style="font-family: Inconsolata"></p>
       <p id="currentConnection" style="font-family: Inconsolata; color: #00ff00">You are online!</p>
       <p id="versionCounter">Test</p>
-      <button id="update">Update</button>
+      <button class="c-button"id="update">Update</button>
       <p class="ZipNotif" style="font-family: Inconsolata; color: #ff0000">This file is still in a Zipped(Compressed) folder! Some functions may be broken as this is not supposed to run in a zipped(Compressed) folder! Extract the folder and then run this file.</p>
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <label for="URLInput" style="font-family: Inconsolata">Put your url below! (Required, Make sure to include http://)</label>
@@ -42,7 +42,7 @@
       <label for="upload" style="font-family: Inconsolata" id="ImageLabel">Upload the icon below. Choose an appropiate icon for the title. Icons are available in the favicon folder (Optional)</label>
       <br>
       <br>
-      <button type="button" class="c-button" id="UploadButton">Upload Image for Icon (Optional)</button>
+      <button type="button" class="c-button c-width" id="UploadButton">Upload Image for Icon (Optional)</button>
       <input type="file" accept="image/*" id="upload" class="FileInput">
       <p id="UploadText">Image Chosen: No Image Chosen</p>
       <img id="DisplayImage" src="#" alt="Image Chosen">
@@ -68,7 +68,7 @@
       <br>
       <textarea disabled class="TextInput" id="BodyCode" type="text" placeholder="Your code here..."></textarea>
       <br>
-      <button type="button" id="LinkButton" class="c-button">Open link in about:blank!</button>
+      <button type="button c-width" id="LinkButton" class="c-button">Open link in about:blank!</button>
       <h1 class="title">View embeddable links below:</h1>
       <p id="OfflineBox" style="visibility: hidden; font-family: Inconsolata; color: #ff0000">You cannot embed website urls without internet. Doing so will show an error page.</p>
       <iframe id="UrlRef" width="100%" height="500px" style="border:none" scrolling="no" src="https://docs.google.com/spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712"></iframe>
@@ -281,7 +281,7 @@
             const uploadTabButton = win.document.createElement('button');
             uploadTabButton.setAttribute('type', 'button');
             uploadTabButton.id = 'UploadButton';
-            uploadTabButton.className = 'c-button';
+            uploadTabButton.className = 'c-button c-width';
             uploadTabButton.textContent = 'Upload Image for Icon';
             ctrlFrameParts.appendChild(uploadTabButton);
             const uploadIcon = win.document.createElement('input');
