@@ -223,9 +223,13 @@
             win.document.head.appendChild(Ruffle);
           };
           if (DynamicBox.checked) {
+            const themecolors = win.document.createElement('link');
+            themecolors.rel = "stylesheet";
+            themecolors.href = "css/theme.css";
+            win.document.body.appendChild(themecolors);
             const terminalstyle = win.document.createElement('link');
             terminalstyle.rel = "stylesheet";
-            terminalstyle.href = "DynamicTab/dynamictab.css";
+            terminalstyle.href = "css/base.css";
             win.document.body.appendChild(terminalstyle);
             const fontstyle = win.document.createElement('link');
             fontstyle.rel = "stylesheet";
