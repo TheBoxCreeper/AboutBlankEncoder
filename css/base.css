@@ -196,3 +196,8 @@
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
+.title2 {
+	color: #00ff00;
+	font-family: Inconsolata;
+	font-size: 24px;
+}
