@@ -98,6 +98,7 @@
         const DynamicBoxSpan = document.getElementById('DynamicBoxSpan');
         let iconURL;
         const internet = false;
+
         function checkConnection() {
           if (navigator.onLine) {
             const internet = true
@@ -185,14 +186,9 @@
           win.document.body.style.margin = '0';
           win.document.body.style.height = '100vh';
           win.document.head.innerHTML = HeadHtml.value;
-          const embed = win.document.createElement('embed');
+          const embed = win.document.createElement('iframe');
           embed.style.border = 'none';
           embed.style.width = '100%';
-          if (DynamicBox.checked) {
-            embed.style.height = 'calc(100vh - 42px)';
-          } else {
-            embed.style.height = '100vh'
-          };
           embed.style.margin = '0';
           embed.id = 'Embed';
           embed.src = document.getElementById("URLInput").value;
@@ -202,9 +198,15 @@
           embed2.style.height = 'calc(100vh - 42px)';
           embed2.style.margin = '0';
           embed2.id = 'Embed2';
-          embed2.src = document.getElementById("URLInput").value;
+          embed2.src = "https://cache.armorgames.com/files/games/awesome-tanks-12812.swf"
           embed2.style.display = 'none'
-          win.document.body.appendChild(embed2);
+          if (DynamicBox.checked) {
+            embed.style.height = 'calc(100vh - 42px)';
+	    embed2.style.height = 'calc(100vh - 42px)';
+          } else {
+            embed.style.height = '100vh'
+	    embed2.style.height = '100vh'
+          };
           const icon = win.document.createElement('link');
           icon.rel = "shortcut icon";
           icon.id = "PageIcon"
@@ -222,6 +224,9 @@
             win.document.head.appendChild(Ruffle);
           };
           if (DynamicBox.checked) {
+	    const Ruffle2 = win.document.createElement('script');
+            Ruffle2.src = "https://unpkg.com/@ruffle-rs/ruffle";
+            win.document.head.appendChild(Ruffle2);
             const themecolors = win.document.createElement('link');
             themecolors.rel = "stylesheet";
             themecolors.href = "css/theme.css";
@@ -247,7 +252,7 @@
             ctrlFrameParts.style.marginRight = '33px';
             ctrlFrameParts.style.marginLeft = '33px';
             const texttitle = win.document.createElement('p');
-            texttitle.className = 'title2';
+            texttitle.className = 'title';
             texttitle.innerHTML = 'About:Blank Dynamic Tab by '
             const tturl = win.document.createElement('a');
             tturl.setAttribute("href",document.getElementById("TitleLink").getAttribute("href"));
@@ -306,20 +311,20 @@
             DisplayIcon.setAttribute('alt', 'Image Chosen')
             DisplayIcon.src = UIF();
             ctrlFrameParts.appendChild(DisplayIcon);
-            const break3 = win.document.createElement('br');
-	          ctrlFrameParts.appendChild(break3);
-      	    const ruffleLabel = win.document.createElement('label');
-  	        ruffleLabel.setAttribute('for','RuffleBox');
-	          ruffleLabel.className = 'hiddencheckbox';
-    	      ruffleLabel.textContent = 'Use Ruffle scripts for Flash Games.';
-	          const ruffleCheck = win.document.createElement('input');
-      	    ruffleCheck.setAttribute('type','checkbox');
-	          ruffleCheck.id = 'RuffleBox';
-      	    ruffleLabel.appendChild(ruffleCheck);
-      	    const ruffleFC = win.document.createElement('span');
-      	    ruffleFC.className = 'Cbox';
-    	      ruffleLabel.appendChild(ruffleFC);
-    	      ctrlFrameParts.appendChild(ruffleLabel);
+	    const break3 = win.document.createElement('br');
+	    ctrlFrameParts.appendChild(break3);
+	    const ruffleLabel = win.document.createElement('label');
+	    ruffleLabel.setAttribute('for','RuffleBox');
+	    ruffleLabel.className = 'hiddencheckbox';
+	    ruffleLabel.textContent = 'Use Ruffle scripts for Flash Games.';
+	    const ruffleCheck = win.document.createElement('input');
+	    ruffleCheck.setAttribute('type','checkbox');
+	    ruffleCheck.id = 'RuffleBox';
+	    ruffleLabel.appendChild(ruffleCheck);
+	    const ruffleFC = win.document.createElement('span');
+	    ruffleFC.className = 'Cbox';
+	    ruffleLabel.appendChild(ruffleFC);
+	    ctrlFrameParts.appendChild(ruffleLabel);
             //ctrlFrameParts end
             ctrlFrame.appendChild(ctrlFrameParts);
             const arrowbtn = win.document.createElement('button');
@@ -339,6 +344,7 @@
             win.document.head.appendChild(warn);
           };
           win.document.body.appendChild(embed);
+	  win.document.body.appendChild(embed2);
           if (BodySwitch.checked) {
             win.document.body.innerHTML = BodyHtml.value;
           }; //Anything past this point in the script can be inserted in the body safely.
