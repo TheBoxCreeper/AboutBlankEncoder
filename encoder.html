@@ -305,7 +305,21 @@
             DisplayIcon.id = 'DisplayImage';
             DisplayIcon.setAttribute('alt', 'Image Chosen')
             DisplayIcon.src = UIF();
-            ctrlFrameParts.appendChild(DisplayIcon)
+            ctrlFrameParts.appendChild(DisplayIcon);
+            const break3 = win.document.createElement('br');
+	          ctrlFrameParts.appendChild(break3);
+      	    const ruffleLabel = win.document.createElement('label');
+  	        ruffleLabel.setAttribute('for','RuffleBox');
+	          ruffleLabel.className = 'hiddencheckbox';
+    	      ruffleLabel.textContent = 'Use Ruffle scripts for Flash Games.';
+	          const ruffleCheck = win.document.createElement('input');
+      	    ruffleCheck.setAttribute('type','checkbox');
+	          ruffleCheck.id = 'RuffleBox';
+      	    ruffleLabel.appendChild(ruffleCheck);
+      	    const ruffleFC = win.document.createElement('span');
+      	    ruffleFC.className = 'Cbox';
+    	      ruffleLabel.appendChild(ruffleFC);
+    	      ctrlFrameParts.appendChild(ruffleLabel);
             //ctrlFrameParts end
             ctrlFrame.appendChild(ctrlFrameParts);
             const arrowbtn = win.document.createElement('button');
