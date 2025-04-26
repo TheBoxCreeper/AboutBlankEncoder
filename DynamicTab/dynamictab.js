@@ -1,5 +1,6 @@
     const ctrlFrame = document.getElementById("ctrlFrame");
     const cfparts = document.getElementById("ctrlFrameParts");
+    const ruffleBox = document.getElementById('RuffleBox');
     const arrow = document.getElementById("arrowsymholder");
     const UploadButton = document.getElementById('UploadButton');
     const Upload = document.getElementById('upload');
@@ -16,15 +17,22 @@
       if (cfState) {
         cfState = false;
       ctrlFrameParts.style.display = "none";
-      document.getElementById('Embed').style.display = "block";
+      if (ruffleBox.checked) {
+	      document.getElementById('Embed2').style.display = "block";
+  	    } else {
+     	 document.getElementById('Embed').style.display = "block";
+    	  };
       arrow.className = "arrowsym down";
       } else {
         cfState = true;
         ctrlFrameParts.style.display = "block";
        document.getElementById('Embed').style.display = "none";
+	document.getElementById('Embed2').style.display = "none";
         arrow.className = "arrowsym up";
       };
     };
+
+
     Upload.addEventListener('change', function(){
     UploadText.textContent = "Tab Icon: " + this.files[0].name
     })
@@ -51,10 +59,15 @@ Upload.onchange = evt => {
   UIF();
 };
 TitleInput.addEventListener('change', function(event) {
-  console.log('Input value changed (on blur):', event.target.value);
   Title.textContent = TitleInput.value;
 });
 UrlInput.addEventListener('change', function(event) {
-  console.log('Input value changed (on blur):', event.target.value);
   document.getElementById('Embed').src = UrlInput.value;
+  if (ruffleBox.checked) {
+  document.getElementById('Embed2').src = UrlInput.value;
+	};
+});
+ruffleBox.addEventListener('change', function() {
+  document.getElementById('Embed').src = UrlInput.value;
+  document.getElementById('Embed2').src = UrlInput.value;
 });
