@@ -1,6 +1,6 @@
 const site = "https://sites.google.com/view/terminal-games";
 const drive = "https://drive.google.com/drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd";
-const file = "https://drive.usercontent.google.com/u/0/uc?id=14KXNPDGLcU9Z4B2aGslmBmtdbw9JlD2j&export=download";
+const file = "https://drive.usercontent.google.com/u/0/uc?id=1KYs8QD0YLzarFNoaVTVZo9UYhxAzslDh&export=download";
 const sheet = "https://docs.google.com/spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712";
 const button = document.getElementById("update");
 const vc = document.getElementById('versionCounter');
