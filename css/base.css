@@ -160,10 +160,6 @@
           color: var(--primary-color);
         }
 
-        a:visited {
-          color: var(--secondary-color);
-        }
-
         a:hover {
           color: var(--secondary-color);
         }
@@ -173,7 +169,7 @@
         }
 #arrow {
   display:flex;
-  background: #00ff00;
+  background: var(--primary-color);
   width:100%;
   outline: none;
   cursor: pointer;
@@ -200,4 +196,14 @@
 	color: var(--primary-color);
 	font-family: Inconsolata;
 	font-size: 24px;
+}
+.blksqr {
+	height:50px;
+	width:50px;
+	border: solid 3px var(--primary-color);
+	border-radius: 10px;
+	font-size:25px;
+	background-color: var(--base-color);
+	color:var(--primary-color);
+	cursor: pointer
 }
