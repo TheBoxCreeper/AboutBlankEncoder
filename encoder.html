@@ -60,6 +60,9 @@
       <label for="DynamicBox" class="hiddencheckbox">Use Dynamic Tabs for URLs. <input type="checkbox" checked="true" id="DynamicBox">
         <span id="DynamicBoxSpan" class="Cbox"></span>
       </label>
+      <label for="PopupBox" class="hiddencheckbox">Open tab as popup (New window). <input type="checkbox" checked="true" id="PopupBox">
+        <span class="Cbox"></span>
+      </label>
       <br>
       <label for="HeadCode" style="font-family: Inconsolata">Insert Head HTML code here! (Optional)</label>
       <br>
@@ -95,6 +98,7 @@
         const UrlRef = document.getElementById('UrlRef');
         const OfflineBox = document.getElementById('OfflineBox');
         const DynamicBox = document.getElementById('DynamicBox');
+	const PopupBox = document.getElementById('PopupBox');
         const DynamicBoxSpan = document.getElementById('DynamicBoxSpan');
         let iconURL;
         const internet = false;
@@ -181,8 +185,16 @@
         Upload.onchange = evt => {
           UIF();
         };
+	function newTab() {
+          if (PopupBox.checked) {
+	    win = window.open('','_blank','width=600;height=400');  
+	  } else {
+	    win = window.open();  
+	  };
+	return win;
+        };
         document.querySelector('#LinkButton').onclick = function() {
-          win = window.open();
+	  newTab();
           win.document.body.style.margin = '0';
           win.document.body.style.height = '100vh';
           win.document.head.innerHTML = HeadHtml.value;
