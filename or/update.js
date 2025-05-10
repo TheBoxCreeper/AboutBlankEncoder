@@ -1,6 +1,6 @@
 const site = "https://sites.google.com/view/terminal-games";
 const drive = "https://drive.google.com/drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd";
-const file = "https://drive.usercontent.google.com/u/0/uc?id=1KYs8QD0YLzarFNoaVTVZo9UYhxAzslDh&export=download";
+const file = "https://drive.usercontent.google.com/u/0/uc?id=1-kzVDiGzp3ZsWyqT-j3_Ksjz3JisI9NL&export=download";
 const sheet = "https://docs.google.com/spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712";
 const button = document.getElementById("update");
 const vc = document.getElementById('versionCounter');
@@ -11,7 +11,7 @@ button.disabled = false;
 button.setAttribute("onclick",clickdata);
 const vdiv = document.getElementById("version");
 const version = vdiv.className;
-const latest = 8;
+const latest = 9;
 document.getElementById("TitleLink").setAttribute("href",site);
 document.getElementById("drive").setAttribute("href",drive);
 document.getElementById("UrlRef").setAttribute("src",sheet);
