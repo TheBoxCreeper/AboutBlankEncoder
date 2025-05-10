@@ -15,9 +15,12 @@ Insert body html when the encode html code in the body instead of an URL box is 
 ## Ruffle in dynamic tabs
 To use Ruffle, you must first replace the url with the flash url.
 Next, check the checkbox.
-To disable ruffle, you must first uncheck the checkbox.
+To disable Ruffle, you must first uncheck the checkbox.
 Next, you should replace the flash url with the new url.
 **Doing these steps out of order could lead to an unfixable crash in Ruffle.**
+## Popup Tabs
+To use popup tabs, check the popup box.
+The tab will open in a new window with a width of 600 pixels and a height of 400 pixels.
 ## Other
 Press the update button to update.
 Press Ctrl+\ to switch to a new tab page.
