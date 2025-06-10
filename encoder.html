@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/base.css" />
   </head>
   <body style="margin: 0px; height: 100vh;">
-    <div id="version" class="9"></div>
+    <div id="version" class="10"></div>
     <div id="NewTab" style="display: none;height:100vh; background-image: url(NewTabPage/Background.png); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
       <iframe style=" z-index: -1;border:none; margin-left: auto; margin-right: 0; width: 100%; height: 64px" src="bar.html"></iframe>
       <img width="272px" height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png">
@@ -21,11 +21,11 @@
         <script src="NewTabPage/newtab.js"></script>
       </div>
     </div>
-    <div id="bodyDiv" class="bodyDiv" style="margin-left: 8px; margin-right:8px z-index:10;">
+    <div id="bodyDiv" class="bodyDiv" style="margin-left: 8px; margin-right:8px; z-index:10;">
       <h1 class="title">About:Blank Encoder by <a id="TitleLink" href="https://sites.google.com/view/terminal-games">Terminal</a>
       </h1>
-      <font face="Inconsolata">Encode any url into a about:blank page! Note: Some websites do not allow this. You can get any version of this encoder here: <a id = "drive" href="https://drive.google.com/drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd">Versions</a>. </font>
-      <p id="currentTime" style="font-family: Inconsolata"></p>
+      <p style='font-family: Inconsolata;'>Encode any url into a about:blank page! Note: Some websites do not allow this. You can get any version of this encoder here: <a id = "drive" href="https://drive.google.com/drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd">Versions</a>. </p>
+      <p id="currentTime" style="font-family: Inconsolata;"></p>
       <p id="currentConnection" style="font-family: Inconsolata; color:var(--primary-color)">Determining Online Connection</p>
       <p id="versionCounter" style="font-family: Inconsolata">Version: Determining Version</p>
       <button class="c-button"id="update" disabled >Update</button>
@@ -77,7 +77,6 @@
       <p id="OfflineBox" style="visibility: hidden; font-family: Inconsolata; color: #ff0000">You cannot embed website urls without internet. Doing so will show an error page.</p>
       <iframe id="UrlRef" width="100%" height="500px" style="border:none" scrolling="no" src="https://docs.google.com/spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712"></iframe>
       <script>
-        console.log("About Blank")
         const urlObj = new window.URL(window.location.href);
         const URLInput2 = document.getElementById("URLInput2");
         const URLInput = document.getElementById("URLInput");
@@ -101,21 +100,23 @@
 	const PopupBox = document.getElementById('PopupBox');
         const DynamicBoxSpan = document.getElementById('DynamicBoxSpan');
         let iconURL;
-        const internet = false;
-
+        let internet = false;
+	//Finish Declarations
         function checkConnection() {
           if (navigator.onLine) {
-            const internet = true
-            OnlineSViewer.style.color = "var(--primary-color)"
-            OnlineSViewer.textContent = "You are online!"
+            internet = true;
+            OnlineSViewer.style.color = "var(--primary-color)";
+            OnlineSViewer.textContent = "You are online!";
             UrlRef.style.visibility = 'visible';
             OfflineBox.style.visibility = 'hidden';
+	    return internet;
           } else {
-            const internet = false
-            OnlineSViewer.style.color = "#ff0000"
-            OnlineSViewer.textContent = "You are offline!"
+            internet = false;
+            OnlineSViewer.style.color = "#ff0000";
+            OnlineSViewer.textContent = "You are offline!";
             OfflineBox.style.visibility = 'visible';
             UrlRef.style.visibility = 'hidden';
+	    return internet;
           };
           return internet;
         };
@@ -167,11 +168,8 @@
         function UIF() {
           const [file] = Upload.files;
           if (file) {
-            let iconURL = URL.createObjectURL(file);
+            iconURL = URL.createObjectURL(file);
             UploadedIcon.src = iconURL;
-            return iconURL;
-          } else {
-            let iconURL = undefined;
             return iconURL;
           };
         };
@@ -198,7 +196,17 @@
           win.document.body.style.margin = '0';
           win.document.body.style.height = '100vh';
           win.document.head.innerHTML = HeadHtml.value;
-          const embed = win.document.createElement('iframe');
+	  if (DynamicBox.checked) {
+            embed.style.height = 'calc(100vh - 42px)';
+	    embed2.style.height = 'calc(100vh - 42px)';
+	    const embed = win.document.createElement('iframe');
+	    return embed;
+          } else {
+            embed.style.height = '100vh'
+	    embed2.style.height = '100vh'
+	    const embed = win.document.createElement('embede');
+	    return embed;
+          };
           embed.style.border = 'none';
           embed.style.width = '100%';
           embed.style.margin = '0';
@@ -212,13 +220,6 @@
           embed2.id = 'Embed2';
           embed2.src = "https://cache.armorgames.com/files/games/awesome-tanks-12812.swf"
           embed2.style.display = 'none'
-          if (DynamicBox.checked) {
-            embed.style.height = 'calc(100vh - 42px)';
-	    embed2.style.height = 'calc(100vh - 42px)';
-          } else {
-            embed.style.height = '100vh'
-	    embed2.style.height = '100vh'
-          };
           const icon = win.document.createElement('link');
           icon.rel = "shortcut icon";
           icon.id = "PageIcon"
