@@ -14,7 +14,7 @@
   <body style="margin: 0px; height: 100vh;">
     <div id="version" class="10"></div>
     <div id="NewTab" style="display: none;height:100vh; background-image: url(NewTabPage/Background.png); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
-      <iframe style=" z-index: -1;border:none; margin-left: auto; margin-right: 0; width: 100%; height: 64px" src="bar.html"></iframe>
+      <iframe title= 'Bar' style=" z-index: -1;border:none; margin-left: auto; margin-right: 0; width: 100%; height: 64px" src="bar.html"></iframe>
       <img width="272px" height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png">
       <div id="inputWrapper">
         <input placeholder="Search Google or type a URL" id="SearchArea" class="searchBox">
@@ -75,7 +75,7 @@
       <button type="button" id="LinkButton" class="c-button c-width">Open link in about:blank!</button>
       <h1 class="title">View embeddable links below:</h1>
       <p id="OfflineBox" style="visibility: hidden; font-family: Inconsolata; color: #ff0000">You cannot embed website urls without internet. Doing so will show an error page.</p>
-      <iframe id="UrlRef" width="100%" height="500px" style="border:none" scrolling="no" src="https://docs.google.com/spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712"></iframe>
+      <iframe title='Link list' id="UrlRef" width="100%" height="500px" style="border:none" scrolling="no" src="https://docs.google.com/spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712"></iframe>
       <script>
         const urlObj = new window.URL(window.location.href);
         const URLInput2 = document.getElementById("URLInput2");
@@ -183,36 +183,31 @@
         Upload.onchange = evt => {
           UIF();
         };
-	function newTab() {
-          if (PopupBox.checked) {
+        document.querySelector('#LinkButton').onclick = function() {
+	  if (PopupBox.checked) {
 	    win = window.open('','_blank','width=600;height=400');  
 	  } else {
 	    win = window.open();  
 	  };
-	return win;
-        };
-        document.querySelector('#LinkButton').onclick = function() {
-	  newTab();
           win.document.body.style.margin = '0';
           win.document.body.style.height = '100vh';
           win.document.head.innerHTML = HeadHtml.value;
+	  let embed;
+          const embed2 = win.document.createElement('embed');
 	  if (DynamicBox.checked) {
+	    embed = win.document.createElement('iframe');
             embed.style.height = 'calc(100vh - 42px)';
 	    embed2.style.height = 'calc(100vh - 42px)';
-	    const embed = win.document.createElement('iframe');
-	    return embed;
           } else {
-            embed.style.height = '100vh'
-	    embed2.style.height = '100vh'
-	    const embed = win.document.createElement('embede');
-	    return embed;
+	    embed = win.document.createElement('embed');
+            embed.style.height = '100vh';
+	    embed2.style.height = '100vh';
           };
           embed.style.border = 'none';
           embed.style.width = '100%';
           embed.style.margin = '0';
           embed.id = 'Embed';
           embed.src = document.getElementById("URLInput").value;
-          const embed2 = win.document.createElement('embed');
           embed2.style.border = 'none';
           embed2.style.width = '100%';
           embed2.style.height = 'calc(100vh - 42px)';
