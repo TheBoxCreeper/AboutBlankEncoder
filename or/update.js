@@ -18,6 +18,7 @@ document.getElementById("UrlRef").setAttribute("src",sheet);
 console.log(version);
 if (version == latest) {
   vc.textContent = "Version: Up to date";
+  button.textContent = 'Download';
 } else if (version < latest && version > 0) {
   vc.textContent = "Version: New version available";
   vc.style.color = "#ff0000";
