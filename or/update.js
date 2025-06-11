@@ -4,13 +4,17 @@ let uSt1 = 'https://';
 let startingPoint = ['sites','drive','drive.usercontent','docs'];
 let uSt2 = '.google.com/'
 const button = document.getElementById("update");
-const site = uSt1.concat(startingPoint[0], uSt2, 'view/terminal-games');
-const drive = uSt1.concat(startingPoint[1], uSt2, 'drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd');
-const file = uSt1.concat(startingPoint[2], uSt2, 'u/0/uc?id=1-kzVDiGzp3ZsWyqT-j3_Ksjz3JisI9NL&export=download');
-const sheet = uSt1.concat(startingPoint[3], uSt2, 'spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712');
-const button = document.getElementById("update");
+let site = uSt1.concat(startingPoint[0], uSt2, 'view/terminal-games');
+let drive = uSt1.concat(startingPoint[1], uSt2, 'drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd');
+let file = uSt1.concat(startingPoint[2], uSt2, 'u/0/uc?id=1-kzVDiGzp3ZsWyqT-j3_Ksjz3JisI9NL&export=download');
+let sheet = uSt1.concat(startingPoint[3], uSt2, 'spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712');
 const zipLink = document.getElementById('zipLink');
-const version = vdiv.className;
+let version;
+if (vdiv?.dataset?.version) {
+  version = parseInt(vdiv.dataset.version, 10);
+} else {
+  version = parseInt(vdiv.className, 10);
+}
 const latest = 9;
 document.getElementById("TitleLink")?.setAttribute("href", site);
 document.getElementById("drive")?.setAttribute("href", drive);
