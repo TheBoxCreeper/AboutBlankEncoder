@@ -167,6 +167,9 @@
         a:active {
           color: var(--primary-color);
         }
+	a:visited {
+          color: var(--primary-color);
+        }
 #arrow {
   display:flex;
   background: var(--primary-color);
@@ -185,12 +188,12 @@
   padding: 8px;
 }
 .up {
-  transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
 .down {
-  transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .title2 {
 	color: var(--primary-color);
