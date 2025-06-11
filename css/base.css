@@ -4,7 +4,6 @@
         }
         .title {
           color: var(--primary-color);
-          font-family: Inconsolata;
         }
         .TextInput {
           width: 100%;
@@ -15,7 +14,6 @@
           border-radius: 4px;
           background-color: var(--base-color);
           color: var(--primary-color);
-          font-family: Inconsolata;
         }
         .TextInput:focus {
           outline: none;
@@ -24,7 +22,6 @@
         }
         .TextInput::placeholder {
           opacity: 0.5;
-          font-family: Inconsolata;
           color: var(--primary-color);
         }
         .TextInput:disabled {
@@ -32,16 +29,7 @@
           background-color: var(--disabled-color);
           cursor: not-allowed;
         }
-        .inconsolata-font {
-          font-family: "Inconsolata", serif;
-          font-optical-sizing: auto;
-          font-weight: 400;
-          font-style: normal;
-          font-variation-settings:
-            "wdth"100;
-        }
         .c-button {
-          font-family: Inconsolata;
           appearance: none;
           border: 0;
           border-radius: 5px;
@@ -54,6 +42,7 @@
           align-items: center;
           justify-content: center;
           height: 38px;
+	font-family: inherit;
         }
 
         .c-width {
@@ -72,7 +61,6 @@
         /* The container */
         .hiddencheckbox {
           display: block;
-          font-family: Inconsolata;
           position: relative;
           padding-left: 35px;
           margin-bottom: 12px;
@@ -142,7 +130,6 @@
 
         #UploadText {
           text-align: center;
-          font-family: Inconsolata;
           width: 100%;
         }
 
@@ -167,9 +154,10 @@
         a:active {
           color: var(--primary-color);
         }
-	a:visited {
-          color: var(--primary-color);
-        }
+	a:focus {
+ 		 outline: 2px solid var(--secondary-color);
+  		outline-offset: 2px;
+		}
 #arrow {
   display:flex;
   background: var(--primary-color);
@@ -188,16 +176,13 @@
   padding: 8px;
 }
 .up {
-  -webkit-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
 .down {
-  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .title2 {
 	color: var(--primary-color);
-	font-family: Inconsolata;
 	font-size: 24px;
 }
 .blksqr {
