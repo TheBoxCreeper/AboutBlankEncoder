@@ -154,8 +154,11 @@
         a:active {
           color: var(--primary-color);
         }
+	a:visited {
+          color: var(--primary-color);
+        }
 	a:focus {
- 		 outline: 2px solid var(--secondary-color);
+ 		 outline: 2px solid var(--primary-color);
   		outline-offset: 2px;
 		}
 #arrow {
