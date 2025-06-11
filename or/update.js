@@ -1,7 +1,7 @@
 const vc = document.getElementById('versionCounter');
 const vdiv = document.getElementById("version");
 let uSt1 = 'https://';
-let startingPoint['sites','drive','drive.usercontent','docs'];
+let startingPoint = ['sites','drive','drive.usercontent','docs'];
 let uSt2 = '.google.com/'
 const button = document.getElementById("update");
 const site = uSt1.concat(startingPoint[0], uSt2, 'view/terminal-games');
