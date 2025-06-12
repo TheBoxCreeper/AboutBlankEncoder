@@ -1,5 +1,5 @@
     const ctrlFrame = document.getElementById("ctrlFrame");
-    const cfparts = document.getElementById("ctrlFrameParts");
+    const ctrlFrameParts = document.getElementById("ctrlFrameParts");
     const ruffleBox = document.getElementById('RuffleBox');
     const arrow = document.getElementById("arrowsymholder");
     const UploadButton = document.getElementById('UploadButton');
@@ -26,7 +26,7 @@
 
     Upload.addEventListener('change', (event) =>{
 	const icon = event.target.files[0];
-    UploadText.textContent = "Tab Icon: " + this.files[0].name
+    UploadText.textContent = "Tab Icon: " + icon.name;
     });
     UploadButton.onclick = function() {
       document.getElementById('upload').click();
@@ -55,8 +55,8 @@ ruffleBox.addEventListener('change', function() {
   document.getElementById('Embed2').src = UrlInput.value;
 });
 function deleteFrame() {
-  ctrlFrame.remove();
-  document.getElementById('Embed').height = 100vh;
-  document.getElementById('Embed2').height = 100vh;
+  ctrlFrame.style.display = 'none';
+  document.getElementById('Embed').style.height = '100vh';
+  document.getElementById('Embed2').style.height = '100vh';
   cf();
 }
