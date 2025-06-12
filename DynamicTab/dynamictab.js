@@ -14,49 +14,32 @@
     let cfState = false;
     let iconURL;
     function cf() {
-      if (cfState) {
-        cfState = false;
-      ctrlFrameParts.style.display = "none";
-      if (ruffleBox.checked) {
-	      document.getElementById('Embed2').style.display = "block";
-  	    } else {
-     	 document.getElementById('Embed').style.display = "block";
-    	  };
-      arrow.className = "arrowsym down";
-      } else {
-        cfState = true;
-        ctrlFrameParts.style.display = "block";
-       document.getElementById('Embed').style.display = "none";
-	document.getElementById('Embed2').style.display = "none";
-        arrow.className = "arrowsym up";
-      };
+      cfState = !cfState;
+
+  ctrlFrameParts.style.display = cfState ? "block" : "none";
+  document.getElementById("Embed").style.display = cfState ? "none" : "block";
+  document.getElementById("Embed2").style.display = cfState ? "none" : (ruffleBox.checked ? "block" : "none");
+
+  arrow.className = cfState ? "arrowsym up" : "arrowsym down"
     };
 
 
-    Upload.addEventListener('change', function(){
+    Upload.addEventListener('change', (event) =>{
+	const icon = event.target.files[0];
     UploadText.textContent = "Tab Icon: " + this.files[0].name
-    })
+    });
     UploadButton.onclick = function() {
       document.getElementById('upload').click();
     };
-    Upload.addEventListener('change', (event) => {
-  const icon = event.target.files[0];
-});
 
-    function UIF() {
-  const [file] = Upload.files;
+Upload.onchange = evt => {
+   const [file] = Upload.files;
   if (file) {
-    let iconURL =  URL.createObjectURL(file);
+    iconURL =  URL.createObjectURL(file);
     UploadedIcon.src = iconURL;
     PageIcon.href = iconURL;
     return iconURL;
-  } else {
-    let iconURL = undefined;
-    return iconURL;
   };
-};
-Upload.onchange = evt => {
-  UIF();
 };
 TitleInput.addEventListener('change', function(event) {
   Title.textContent = TitleInput.value;
@@ -71,3 +54,9 @@ ruffleBox.addEventListener('change', function() {
   document.getElementById('Embed').src = UrlInput.value;
   document.getElementById('Embed2').src = UrlInput.value;
 });
+function deleteFrame() {
+  ctrlFrame.remove();
+  document.getElementById('Embed').height = 100vh;
+  document.getElementById('Embed2').height = 100vh;
+  cf();
+}
