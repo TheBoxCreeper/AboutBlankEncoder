@@ -25,7 +25,9 @@ drive = '425';
 if (button) {
   button.disabled = false;
   button.textContent = 'Download';
-  button.addEventListener("click", () => window.open(file, "_blank"));
+  const st1 = "window.open(\'";
+  const st2 = "\',\'_blank')";
+  button.setAttribute("onclick",st1.concat(file,st2));
 }
 sheet = '42';
 file = 'Package';
