@@ -5,11 +5,21 @@
     <title>New Tab</title>
     <link rel="shortcut icon" href="favicons/!Encoder Icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="config.js" ></script>
+    <script id='constructor'>
+    console.log(config);
+    const cssString = "body {font-family:".concat(config[4].value,"} :root{ --base-color: ",config[0].value,"; --primary-color: ",config[1].value,"; --secondary-color: ",config[2].value,"; --disabled-color: ",config[3].value,"; }");
+    const themeCss = document.createElement('style');
+    themeCss.textContent = cssString;
+    document.head.appendChild(themeCss);
+    const baseCss = document.createElement('link');
+    baseCss.setAttribute('rel','stylesheet');
+    baseCss.setAttribute('href','css/base.css');
+    document.head.appendChild(baseCss);
+    </script>
     <link rel="stylesheet" href="css/zipnotif.css" />
     <link rel="stylesheet" href="css/newtab.css" />
     <link rel="stylesheet" href="font.css" />
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/base.css" />
   </head>
   <body style="margin: 0px; height: 100vh;">
     <div id="version" data-version="10"></div>
@@ -237,10 +247,10 @@
 	    const Ruffle2 = win.document.createElement('script');
             Ruffle2.src = "https://unpkg.com/@ruffle-rs/ruffle";
             win.document.head.appendChild(Ruffle2);
-            const themecolors = win.document.createElement('link');
-            themecolors.rel = "stylesheet";
-            themecolors.href = "css/theme.css";
-            win.document.head.appendChild(themecolors);
+            const themeCss = win.document.createElement('style');
+            themeCss.rel = "stylesheet";
+            themeCss.textContent = cssString;
+            win.document.head.appendChild(themeCss);
             const terminalstyle = win.document.createElement('link');
             terminalstyle.rel = "stylesheet";
             terminalstyle.href = "css/base.css";
