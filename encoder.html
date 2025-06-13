@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/base.css" />
   </head>
   <body style="margin: 0px; height: 100vh;">
-    <div id="version" class="10"></div>
+    <div id="version" data-version="10"></div>
     <div id="NewTab" style="display: none;height:100vh; background-image: url(NewTabPage/Background.png); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
       <iframe title= 'Bar' style=" z-index: -1;border:none; margin-left: auto; margin-right: 0; width: 100%; height: 64px" src="bar.html"></iframe>
       <img width="272px" height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png">
@@ -24,23 +24,22 @@
     <div id="bodyDiv" class="bodyDiv" style="margin-left: 8px; margin-right:8px; z-index:10;">
       <h1 class="title">About:Blank Encoder by <a id="TitleLink" href="https://sites.google.com/view/terminal-games">Terminal</a>
       </h1>
-      <p style='font-family: Inconsolata;'>Encode any url into a about:blank page! Note: Some websites do not allow this. You can get any version of this encoder here: <a id = "drive" href="https://drive.google.com/drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd">Versions</a>. </p>
-      <p id="currentTime" style="font-family: Inconsolata;"></p>
-      <p id="currentConnection" style="font-family: Inconsolata; color:var(--primary-color)">Determining Online Connection</p>
-      <p id="versionCounter" style="font-family: Inconsolata">Version: Determining Version</p>
-      <button class="c-button"id="update" disabled >Update</button>
+      <p >Encode any url into a about:blank page! Note: Some websites do not allow this. You can get any version of this encoder here: <a id = "drive" href="https://drive.google.com/drive/folders/1Fc5m2RE5XyS05-HWORFb7ptZXnn5fAxd">Versions</a>. </p>
+      <p id="currentTime" ></p>
+      <p id="currentConnection" style=" color:var(--primary-color)">Determining Online Connection</p>
+      <p id="versionCounter" >Version: Determining Version</p>
+      <button type='button' class="c-button"id="update" disabled >Update</button>
       <br>
-      <p class="ZipNotif" style="font-family: Inconsolata; color: #ff0000">This file is still in a Zipped(Compressed) folder! Some functions may be broken as this is not supposed to run in a zipped(Compressed) folder! Extract the folder and then run this file.</p>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <label for="URLInput" style="font-family: Inconsolata">Put your url below! (Required, Make sure to include http://)</label>
+      <p class="ZipNotif" style="color: #ff0000">The encoder has been installed improperly! This can be caused by being in a zipped folder, causing limited features, or it could be caused by a broken installation. Download the latest one here: <a id='zipLink' href='https://sites.google.com/view/terminal-games'>Latest Version</a>.</p>
+      <label for="URLInput" >Put your url below! (Required, Make sure to include http://)</label>
       <br>
       <input class="TextInput" id="URLInput" type="text" placeholder="URL">
       <br>
-      <label for="TitleInput" style="font-family: Inconsolata">Put the title of the page below! You should use the appropiate title for the icon (Optional)</label>
+      <label for="TitleInput" >Put the title of the page below! You should use the appropiate title for the icon (Optional)</label>
       <br>
       <input class="TextInput" id="TitleInput" type="text" placeholder="about:blank">
       <br>
-      <label for="upload" style="font-family: Inconsolata" id="ImageLabel">Upload the icon below. Choose an appropiate icon for the title. Icons are available in the favicon folder (Optional)</label>
+      <label for="upload"  id="ImageLabel">Upload the icon below. Choose an appropiate icon for the title. Icons are available in the favicon folder (Optional)</label>
       <br>
       <br>
       <button type="button" class="c-button c-width" id="UploadButton">Upload Image for Icon (Optional)</button>
@@ -64,17 +63,17 @@
         <span class="Cbox"></span>
       </label>
       <br>
-      <label for="HeadCode" style="font-family: Inconsolata">Insert Head HTML code here! (Optional)</label>
+      <label for="HeadCode" >Insert Head HTML code here! (Optional)</label>
       <br>
       <textarea class="TextInput" id="HeadCode" type="text" placeholder="Your code here..."></textarea>
       <br>
-      <label for="BodyCode" style="font-family: Inconsolata">Insert Body HTML code here! (Optional)</label>
+      <label for="BodyCode" >Insert Body HTML code here! (Optional)</label>
       <br>
       <textarea disabled class="TextInput" id="BodyCode" type="text" placeholder="Your code here..."></textarea>
       <br>
       <button type="button" id="LinkButton" class="c-button c-width">Open link in about:blank!</button>
       <h1 class="title">View embeddable links below:</h1>
-      <p id="OfflineBox" style="visibility: hidden; font-family: Inconsolata; color: #ff0000">You cannot embed website urls without internet. Doing so will show an error page.</p>
+      <p id="OfflineBox" style="visibility: hidden; color: #ff0000">You cannot embed website urls without internet. Doing so will show an error page.</p>
       <iframe title='Link list' id="UrlRef" width="100%" height="500px" style="border:none" scrolling="no" src="https://docs.google.com/spreadsheets/u/0/d/1sQ9YZpkpZfFlBKKuGHKwyHQ6Iyd38ciy3JAjNVFpQNs/htmlembed/sheet?headers=false&gid=270422712"></iframe>
       <script>
         const urlObj = new window.URL(window.location.href);
@@ -160,7 +159,7 @@
             DynamicBox.setAttribute("disabled", "true");
             DynamicBoxSpan.className = 'Cbox disabled';
             BodyHtml.setAttribute("disabled", "true");
-          }
+          };
         };
         Upload.addEventListener('change', (event) => {
           const icon = event.target.files[0];
@@ -189,9 +188,13 @@
 	  } else {
 	    win = window.open();  
 	  };
+	  win.document.write('<!DOCTYPE html><html><head></head><body></body></html>');
           win.document.body.style.margin = '0';
           win.document.body.style.height = '100vh';
           win.document.head.innerHTML = HeadHtml.value;
+	  const charset = win.document.createElement('meta');
+	  charset.setAttribute('charset','UTF-8');
+	  win.document.head.appendChild(charset);
 	  let embed;
           const embed2 = win.document.createElement('embed');
 	  if (DynamicBox.checked) {
@@ -210,7 +213,6 @@
           embed.src = document.getElementById("URLInput").value;
           embed2.style.border = 'none';
           embed2.style.width = '100%';
-          embed2.style.height = 'calc(100vh - 42px)';
           embed2.style.margin = '0';
           embed2.id = 'Embed2';
           embed2.src = "https://cache.armorgames.com/files/games/awesome-tanks-12812.swf"
@@ -238,15 +240,15 @@
             const themecolors = win.document.createElement('link');
             themecolors.rel = "stylesheet";
             themecolors.href = "css/theme.css";
-            win.document.body.appendChild(themecolors);
+            win.document.head.appendChild(themecolors);
             const terminalstyle = win.document.createElement('link');
             terminalstyle.rel = "stylesheet";
             terminalstyle.href = "css/base.css";
-            win.document.body.appendChild(terminalstyle);
+            win.document.head.appendChild(terminalstyle);
             const fontstyle = win.document.createElement('link');
             fontstyle.rel = "stylesheet";
             fontstyle.href = "font.css";
-            win.document.body.appendChild(fontstyle);
+            win.document.head.appendChild(fontstyle);
             const cfscript = win.document.createElement('script');
             cfscript.src = "DynamicTab/dynamictab.js"
             win.document.body.appendChild(cfscript)
@@ -270,7 +272,6 @@
             const UrlLabel = win.document.createElement('label');
             UrlLabel.setAttribute('for', 'UrlInput');
             UrlLabel.textContent = 'Tab Url';
-            UrlLabel.style.fontFamily = "Inconsolata";
             ctrlFrameParts.appendChild(UrlLabel);
             const UrlTabInput = win.document.createElement('input');
             UrlTabInput.setAttribute('type', 'text');
@@ -281,7 +282,6 @@
             const TitleLabel = win.document.createElement('label');
             TitleLabel.setAttribute('for', 'TitleInput');
             TitleLabel.textContent = 'Tab Title';
-            TitleLabel.style.fontFamily = "Inconsolata";
             ctrlFrameParts.appendChild(TitleLabel);
             const TitleInput = win.document.createElement('input');
             TitleInput.setAttribute('type', 'text');
@@ -291,7 +291,6 @@
             ctrlFrameParts.appendChild(TitleInput);
             const ImageLabel = win.document.createElement('label');
             ImageLabel.setAttribute('for', 'upload');
-            ImageLabel.style.fontFamily = "Inconsolata";
             ImageLabel.textContent = 'Tab Icon';
             ctrlFrameParts.appendChild(ImageLabel);
             const break1 = win.document.createElement('br');
@@ -333,12 +332,23 @@
 	    ruffleFC.className = 'Cbox';
 	    ruffleLabel.appendChild(ruffleFC);
 	    ctrlFrameParts.appendChild(ruffleLabel);
+	    const deleteBox = win.document.createElement('div');
+	    deleteBox.style.display = 'flex';
+	    deleteBox.style.justifyContent = 'center';
+	    const deleteButton = win.document.createElement('button');
+            deleteButton.className = 'c-button';
+	    deleteButton.setAttribute('onclick','deleteFrame();');
+	    deleteButton.textContent = 'Disable Dynamic Tabs';
+	    deleteButton.style.backgroundColor = '#FF0000';
+	    deleteButton.style.color =  '#000000';
+            deleteBox.appendChild(deleteButton)
+	    ctrlFrameParts.appendChild(deleteBox);
             //ctrlFrameParts end
             ctrlFrame.appendChild(ctrlFrameParts);
             const arrowbtn = win.document.createElement('button');
             arrowbtn.id = 'arrow'
-            arrowbtn.setAttribute('onclick', 'cf();')
-            arrowbtn.setAttribute('type', 'submit');
+            arrowbtn.setAttribute('onclick', 'cf();');
+            arrowbtn.setAttribute('type', 'button');
             const arrowsym = win.document.createElement('i');
             arrowsym.id = "arrowsymholder"
             arrowsym.className = "arrowsym down"
@@ -358,7 +368,7 @@
           }; //Anything past this point in the script can be inserted in the body safely.
         };
       </script>
-      <script src="https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/or/update.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/or/update.js?t=<%= new Date().getTime() %>"></script>
     </div>
   </body>
 </html>
