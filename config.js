@@ -1,4 +1,4 @@
-export const config = [
+const config = [
 	/* Styles customization*/
 	{name: 'css-base-color' , value: '#000000' }, /* Base or Background Color*/
 	{name: 'css-primary-color' , value: '#00FF00' }, /* Text Color*/
