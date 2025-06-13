@@ -14,6 +14,7 @@
           border-radius: 4px;
           background-color: var(--base-color);
           color: var(--primary-color);
+	  font-family: inherit;
         }
         .TextInput:focus {
           outline: none;
@@ -23,6 +24,7 @@
         .TextInput::placeholder {
           opacity: 0.5;
           color: var(--primary-color);
+	  font-family: inherit;
         }
         .TextInput:disabled {
           border: 2px solid var(--secondary-color);
