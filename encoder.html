@@ -28,7 +28,15 @@
       <img width="272px" height="92px" id="Logo" alt="" src="NewTabPage/GoogleLogo.png">
       <div id="inputWrapper">
         <input placeholder="Search Google or type a URL" id="SearchArea" class="searchBox">
-        <script src="NewTabPage/newtab.js"></script>
+        <script>
+	  const searchBox = document.getElementById("SearchArea");
+          searchBox.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && config[8].value) {
+              const text = `https://google.com/search?q=${encodeURIComponent(searchBox.value)}`
+              window.location.href = text;
+            };
+          });
+	</script>
       </div>
     </div>
     <div id="bodyDiv" class="bodyDiv" style="margin-left: 8px; margin-right:8px; z-index:10;">
@@ -73,6 +81,7 @@
         <span class="Cbox"></span>
       </label>
       <br>
+      <div id='htmlCode' style='display:none;'>
       <label for="HeadCode" >Insert Head HTML code here! (Optional)</label>
       <br>
       <textarea class="TextInput" id="HeadCode" type="text" placeholder="Your code here..."></textarea>
@@ -81,6 +90,7 @@
       <br>
       <textarea disabled class="TextInput" id="BodyCode" type="text" placeholder="Your code here..."></textarea>
       <br>
+      </div>
       <button type="button" id="LinkButton" class="c-button c-width">Open link in about:blank!</button>
       <h1 class="title">View embeddable links below:</h1>
       <p id="OfflineBox" style="visibility: hidden; color: #ff0000">You cannot embed website urls without internet. Doing so will show an error page.</p>
@@ -170,18 +180,11 @@
             DynamicBoxSpan.className = 'Cbox disabled';
             BodyHtml.setAttribute("disabled", "true");
           };
+
         };
         Upload.addEventListener('change', (event) => {
           const icon = event.target.files[0];
         });
-        function UIF() {
-          const [file] = Upload.files;
-          if (file) {
-            iconURL = URL.createObjectURL(file);
-            UploadedIcon.src = iconURL;
-            return iconURL;
-          };
-        };
         function showTime() {
           document.getElementById('currentTime').innerHTML = new Date().toUTCString();
         };
@@ -190,7 +193,13 @@
           showTime();
         }, 1000);
         Upload.onchange = evt => {
-          UIF();
+           const [file] = Upload.files;
+          if (file) {
+            iconURL = URL.createObjectURL(file);
+            UploadedIcon.src = iconURL;
+            return iconURL;
+          };
+
         };
         document.querySelector('#LinkButton').onclick = function() {
 	  if (PopupBox.checked) {
@@ -198,7 +207,6 @@
 	  } else {
 	    win = window.open();  
 	  };
-	  win.document.write('<!DOCTYPE html><html><head></head><body></body></html>');
           win.document.body.style.margin = '0';
           win.document.body.style.height = '100vh';
           win.document.head.innerHTML = HeadHtml.value;
@@ -231,13 +239,12 @@
           icon.rel = "shortcut icon";
           icon.id = "PageIcon"
           console.log(iconURL);
-          icon.href = UIF()
+          icon.href = iconURL;
           win.document.head.appendChild(icon);
           const title = win.document.createElement('title');
           title.id = "PageTitle"
-          title.textContent = UploadTitle.value
+          title.textContent = UploadTitle.value;
           win.document.head.appendChild(title);
-          console.log(document.getElementById('RuffleBox').checked)
           if (document.getElementById('RuffleBox').checked) {
             const Ruffle = win.document.createElement('script');
             Ruffle.src = "https://unpkg.com/@ruffle-rs/ruffle";
@@ -326,7 +333,7 @@
             const DisplayIcon = win.document.createElement('img');
             DisplayIcon.id = 'DisplayImage';
             DisplayIcon.setAttribute('alt', 'Image Chosen')
-            DisplayIcon.src = UIF();
+            DisplayIcon.src = iconURL;
             ctrlFrameParts.appendChild(DisplayIcon);
 	    const break3 = win.document.createElement('br');
 	    ctrlFrameParts.appendChild(break3);
@@ -378,6 +385,16 @@
           }; //Anything past this point in the script can be inserted in the body safely.
         };
       </script>
+      <script id='secondary-constructor'>
+	if (config[6].value) {
+	UploadedIcon.src = config[6].value;
+	iconURL = config[6].value;
+	};
+	UploadTitle.value = config[7].value;
+	if (config[9].value) {
+	document.getElementById('htmlCode').style.display = 'block';
+	};
+	</script>
       <script src="https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/or/update.js?t=<%= new Date().getTime() %>"></script>
     </div>
   </body>
