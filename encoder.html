@@ -161,7 +161,7 @@
             } else {
               NewTabState = true
               NewTabFrame.style.display = 'block';
-              BodyDiv.style.display = 'none'
+              BodyDiv.style.display = 'none';
               console.log('NewTabState2 is ', NewTabState);
             };
           };
@@ -214,7 +214,7 @@
   		return substrs.some(substr => str.startsWith(substr));
 	};
 	let url = URLInput.value;
-	if (!checkString(url,urlSchemes)) {
+	if (!checkString(url,urlSchemes) &&  !(config[5].value='none')) {
 	url = setScheme.concat(url);
 	};
 	  if (PopupBox.checked) {
