@@ -2,9 +2,6 @@
           background-color: var(--base-color);
           color: var(--primary-color);
         }
-        .title {
-          color: var(--primary-color);
-        }
         .TextInput {
           width: 100%;
           padding: 12px 3px;
@@ -47,9 +44,6 @@
 	font-family: inherit;
         }
 
-        .c-width {
-         min-width: 100%;
-        }
 
         .c-button:hover {
           background: var(--secondary-color);
