@@ -70,7 +70,7 @@
       <br>
       <br>
       <button type="button" class="c-button" style = 'min-width: 100%;' id="UploadButton">Upload Image for Icon (Optional)</button>
-      <input type="file" accept="image/*" id="upload" class="FileInput">
+      <input type="file" accept="image/*" id="upload" style='display: none;'>
       <p id="UploadText">Image Chosen: No Image Chosen</p>
       <img id="DisplayImage" src="#" alt="Image Chosen">
       <br>
@@ -338,7 +338,7 @@
             const uploadIcon = win.document.createElement('input');
             uploadIcon.setAttribute('type', 'file');
             uploadIcon.id = 'upload';
-            uploadIcon.className = 'FileInput';
+            uploadIcon.style.display = 'none';
             uploadIcon.setAttribute('accept', 'image/*');
             ctrlFrameParts.appendChild(uploadIcon);
             const UploadTabText = win.document.createElement('p');
@@ -359,6 +359,7 @@
 	    const ruffleCheck = win.document.createElement('input');
 	    ruffleCheck.setAttribute('type','checkbox');
 	    ruffleCheck.id = 'RuffleBox';
+	    ruffleCheck.style.opacity = '0';
 	    ruffleLabel.appendChild(ruffleCheck);
 	    const ruffleFC = win.document.createElement('span');
 	    ruffleFC.className = 'Cbox';
