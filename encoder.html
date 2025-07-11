@@ -285,6 +285,7 @@
             win.document.body.appendChild(cfscript)
             const ctrlFrame = win.document.createElement('div');
             ctrlFrame.id = 'ctrlFrame';
+	    ctrlFrame.className = 'ctrlFrame';
             const ctrlFrameParts = win.document.createElement('div');
             ctrlFrameParts.id = 'ctrlFrameParts';
             ctrlFrameParts.style.height = 'calc(100vh - 105px)';
@@ -343,10 +344,12 @@
             ctrlFrameParts.appendChild(uploadIcon);
             const UploadTabText = win.document.createElement('p');
             UploadTabText.id = 'UploadText';
+	    UploadTabText.className = 'UploadText';
             UploadTabText.textContent = 'Tab Icon: Unchanged';
             ctrlFrameParts.appendChild(UploadTabText);
             const DisplayIcon = win.document.createElement('img');
             DisplayIcon.id = 'DisplayImage';
+	    DisplayIcon.className = 'DisplayImage';
             DisplayIcon.setAttribute('alt', 'Image Chosen')
             DisplayIcon.src = iconURL;
             ctrlFrameParts.appendChild(DisplayIcon);
@@ -379,7 +382,7 @@
             //ctrlFrameParts end
             ctrlFrame.appendChild(ctrlFrameParts);
             const arrowbtn = win.document.createElement('button');
-            arrowbtn.id = 'arrow'
+            arrowbtn.className = 'arrow';
             arrowbtn.setAttribute('onclick', 'cf();');
             arrowbtn.setAttribute('type', 'button');
             const arrowsym = win.document.createElement('i');
