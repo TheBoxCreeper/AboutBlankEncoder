@@ -49,9 +49,9 @@
       </div>
     </div>
     <div id="bodyDiv" class="bodyDiv" style="margin-left: 8px; margin-right:8px; z-index:10;">
-      <h1 class="title">About:Blank Encoder by <a id="TitleLink" href="https://google.com">Terminal</a>
+      <h1 class="title">About:Blank Encoder by <a class="a"id="TitleLink" href="https://google.com">Terminal</a>
       </h1>
-      <p >Encode any url into a about:blank page! Note: Some websites do not allow this. You can get any version of this encoder here: <a id = "drive" href="https://google.com">Versions</a>. </p>
+      <p >Encode any url into a about:blank page! Note: Some websites do not allow this. You can get any version of this encoder here: <a class="a"id = "drive" href="https://google.com">Versions</a>. </p>
       <p id="currentTime" ></p>
       <p id="currentConnection" style=" color:var(--primary-color)">Determining Online Connection</p>
       <p id="versionCounter" >Version: Determining Version</p>
@@ -299,6 +299,7 @@
             const tturl = win.document.createElement('a');
             tturl.setAttribute("href",document.getElementById("TitleLink").getAttribute("href"));
             tturl.textContent = "Terminal";
+	    tturl.className = "a";
             texttitle.appendChild(tturl);
             ctrlFrameParts.appendChild(texttitle);
             const UrlLabel = win.document.createElement('label');
