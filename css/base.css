@@ -145,21 +145,21 @@
           display: block;
         }
 
-        a:link {
+        .a:link {
           color: var(--primary-color);
         }
 
-        a:hover {
+        .a:hover {
           color: var(--secondary-color);
         }
 
-        a:active {
+        .a:active {
           color: var(--primary-color);
         }
-	a:visited {
+	.a:visited {
           color: var(--primary-color);
         }
-	a:focus {
+	.a:focus {
  		 outline: 2px solid var(--primary-color);
   		outline-offset: 2px;
 		}
