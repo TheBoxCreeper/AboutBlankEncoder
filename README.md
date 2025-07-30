@@ -1,3 +1,4 @@
+[![](https://data.jsdelivr.com/v1/package/gh/TheBoxCreeper/AboutBlankEncoder/badge)](https://www.jsdelivr.com/package/gh/TheBoxCreeper/AboutBlankEncoder)
 # How to use
 ## URL, Title, and Icon
 Insert the URL of your choice in the URL input (The input with URL in it).
