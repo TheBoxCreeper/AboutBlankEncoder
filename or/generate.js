@@ -1,5 +1,5 @@
 const ag = document.createElement('script');
-  ag.src = 'https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/or/mainb.js';
+  ag.src = 'https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/or/mainb.js?t=<%= new Date().getTime() %>';
   const b = document.createElement('div');
   b.id = 'bodyHtml';
   b.setAttribute("style",document.body.getAttribute("style"));
