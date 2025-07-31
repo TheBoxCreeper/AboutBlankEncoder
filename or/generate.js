@@ -45,7 +45,7 @@ const ag = document.createElement('script');
   document.head.appendChild(k);
   const l = document.createElement('link');
   l.setAttribute('rel','stylesheet');
-  l.setAttribute('href','https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/css/oneline.css');
+  l.setAttribute('href','https://cdn.jsdelivr.net/gh/TheBoxCreeper/AboutBlankEncoder@master/css/oneline.css?t=<%= new Date().getTime() %>');
   document.head.appendChild(l);
   const n = document.createElement('link');
   n.rel='stylesheet';
