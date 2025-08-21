@@ -29,10 +29,6 @@ const ag = document.createElement('script');
     document.head.appendChild(rs);
   }
   let g = d.textContent;
-  const h = document.createElement('style');
-  //Line below is generated a bit differently.
-  h.textContent='.ctrlFrame{  --base-color: rgb(0,0,0);--primary-color:rgb(0,255,0);--secondary-color:rgb(0,170,0);--disabled-color:rgb(0,80,0);font-family:Inconsolata;}';
-  //Line separator
   document.head.appendChild(h);
   const j = document.createElement('link');
   j.setAttribute('rel','preconnect');
