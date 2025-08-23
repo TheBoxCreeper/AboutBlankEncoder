@@ -29,7 +29,6 @@ const ag = document.createElement('script');
     document.head.appendChild(rs);
   }
   let g = d.textContent;
-  document.head.appendChild(h);
   const j = document.createElement('link');
   j.setAttribute('rel','preconnect');
   j.setAttribute('href','https://fonts.googleapis.com');
