@@ -10,7 +10,7 @@ document.getElementById("vc").appendChild(codeurl);
 const flashurl = document.createElement('a');
 flashurl.setAttribute("href", "https://uc138c26fdf711d1dd27e2e91330.dl.dropboxusercontent.com/zip_download_get/CbqRcYmJpZRpEoj_yyc_BrP-m-4BimXn6IlQCn2A383GGKOMzccFoDBBRLY1MZuvBpNVM76kquAbhhPX2LvS_A6I2QXUwBWC8BrfXqQnmw0OAQ");
 flashurl.textContent = "here";
-document.getElementById("fd").textContent = "Get some flash games";
+document.getElementById("fd").textContent = "Get some flash games ";
 document.getElementById("fd").appendChild(flashurl);
 const ab = document.querySelectorAll('.ab');
 ab.forEach(element => {
