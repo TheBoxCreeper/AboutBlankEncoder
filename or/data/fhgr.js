@@ -8,7 +8,7 @@ codeurl.textContent = "here (Right click to open)";
 document.getElementById("vc").textContent = "Get the latest version ("+version+") ";
 document.getElementById("vc").appendChild(codeurl);
 const flashurl = document.createElement('a');
-flashurl.setAttribute("href", "https://uc138c26fdf711d1dd27e2e91330.dl.dropboxusercontent.com/zip_download_get/CbqRcYmJpZRpEoj_yyc_BrP-m-4BimXn6IlQCn2A383GGKOMzccFoDBBRLY1MZuvBpNVM76kquAbhhPX2LvS_A6I2QXUwBWC8BrfXqQnmw0OAQ");
+flashurl.setAttribute("href", "https://www.dropbox.com/scl/fo/840530vlrwekwv6v0dhv7/AHQ3wkuRSZpEKjNVW4bc_f8?rlkey=yfsj740yp16kg8uzn4zag1o59&e=3&st=h2dsak8a&dl=1");
 flashurl.textContent = "here";
 flashurl.setAttribute("contenteditable",false);
 document.getElementById("fd").textContent = "Get some flash games ";
